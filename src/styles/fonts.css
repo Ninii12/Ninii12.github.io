@@ -1,0 +1,13 @@
+/* =========================================================
+   The Charm Archive — font foundation
+   ---------------------------------------------------------
+   Fontsource self-hosts these fonts with the build. The
+   unicode-range declarations mean browsers download only
+   the subset needed for the page text.
+   ========================================================= */
+
+/* Fraunces: full variable axes (weight, optical size, SOFT, WONK) */
+@import "@fontsource-variable/fraunces/full.css";
+
+/* Manrope: variable weight axis */
+@import "@fontsource-variable/manrope/wght.css";

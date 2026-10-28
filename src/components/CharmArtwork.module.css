@@ -1,0 +1,405 @@
+.artwork {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 760 / 860;
+  filter: drop-shadow(0 28px 36px rgba(42, 21, 34, 0.1));
+  pointer-events: none;
+  transform-style: preserve-3d;
+  user-select: none;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+.screen {
+  mix-blend-mode: screen;
+}
+
+/* Halo and chrome atmosphere */
+
+.haloWhite {
+  stop-color: var(--white);
+  stop-opacity: 0.86;
+}
+
+.haloRose {
+  stop-color: var(--rosewater-100);
+  stop-opacity: 0.3;
+}
+
+.haloClear {
+  stop-color: var(--rosewater-100);
+  stop-opacity: 0;
+}
+
+/* Sphere material */
+
+.baseWhite {
+  stop-color: var(--white);
+}
+
+.basePearl {
+  stop-color: #fff5fa;
+}
+
+.baseRose {
+  stop-color: var(--metal-pink);
+}
+
+.baseSilver {
+  stop-color: #dcd5e5;
+}
+
+.baseGrey {
+  stop-color: #857b90;
+}
+
+.basePlum {
+  stop-color: #74276b;
+}
+
+.baseDeep {
+  stop-color: #2b0a25;
+}
+
+.baseBlack {
+  stop-color: #090307;
+}
+
+.plumClear {
+  stop-color: var(--plum-950);
+  stop-opacity: 0;
+}
+
+.plumSoft {
+  stop-color: var(--plum-900);
+  stop-opacity: 0.18;
+}
+
+.plumDeep {
+  stop-color: var(--plum-950);
+  stop-opacity: 0.78;
+}
+
+.plumBlack {
+  stop-color: var(--plum-950);
+  stop-opacity: 0.94;
+}
+
+.softWhite {
+  stop-color: var(--white);
+  stop-opacity: 0.88;
+}
+
+.softMid {
+  stop-color: var(--white);
+  stop-opacity: 0.24;
+}
+
+.softClear {
+  stop-color: var(--white);
+  stop-opacity: 0;
+}
+
+.roseCore {
+  stop-color: var(--metal-pink);
+  stop-opacity: 0.82;
+}
+
+.roseMid {
+  stop-color: #ff76bb;
+  stop-opacity: 0.38;
+}
+
+.roseClear {
+  stop-color: var(--rosewater-100);
+  stop-opacity: 0;
+}
+
+.hotCore {
+  stop-color: var(--metal-magenta);
+  stop-opacity: 0.72;
+}
+
+.hotMid {
+  stop-color: #ff5bae;
+  stop-opacity: 0.34;
+}
+
+.hotEdge {
+  stop-color: #9d3d8e;
+  stop-opacity: 0.16;
+}
+
+.hotClear {
+  stop-color: var(--metal-magenta);
+  stop-opacity: 0;
+}
+
+.iceBright {
+  stop-color: #c2faff;
+  stop-opacity: 0.78;
+}
+
+.iceMid {
+  stop-color: var(--metal-ice);
+  stop-opacity: 0.3;
+}
+
+.iceClear {
+  stop-color: var(--metal-ice);
+  stop-opacity: 0;
+}
+
+.violetClear {
+  stop-color: var(--metal-violet);
+  stop-opacity: 0;
+}
+
+.violetMid {
+  stop-color: #7652c9;
+  stop-opacity: 0.24;
+}
+
+.violetBright {
+  stop-color: var(--metal-violet);
+  stop-opacity: 0.56;
+}
+
+.spectrumIce {
+  stop-color: var(--metal-ice);
+  stop-opacity: 0.82;
+}
+
+.spectrumClear {
+  stop-color: var(--metal-white);
+  stop-opacity: 0;
+}
+
+.spectrumMagenta {
+  stop-color: var(--metal-magenta);
+  stop-opacity: 0.92;
+}
+
+.spectrumWhite {
+  stop-color: var(--metal-white);
+  stop-opacity: 0.96;
+}
+
+.spectrumViolet {
+  stop-color: var(--metal-violet);
+  stop-opacity: 0.86;
+}
+
+.rimWhite {
+  stop-color: var(--metal-white);
+  stop-opacity: 0.96;
+}
+
+.rimClear {
+  stop-color: var(--metal-white);
+  stop-opacity: 0;
+}
+
+.rimRose {
+  stop-color: var(--metal-pink);
+  stop-opacity: 0.72;
+}
+
+/* Chrome shards */
+
+.shardWhite {
+  stop-color: var(--white);
+}
+
+.shardPearl {
+  stop-color: var(--pearl-50);
+}
+
+.shardLight {
+  stop-color: #f4edf5;
+}
+
+.shardSilver {
+  stop-color: #d8d1df;
+}
+
+.shardGrey {
+  stop-color: #7f7488;
+}
+
+.shardRose {
+  stop-color: var(--metal-magenta);
+}
+
+.shardPlum {
+  stop-color: #6e1d5f;
+}
+
+.shardDeep {
+  stop-color: #25081f;
+}
+
+.sheenWhite {
+  stop-color: var(--white);
+  stop-opacity: 0.9;
+}
+
+.sheenMid {
+  stop-color: var(--white);
+  stop-opacity: 0.22;
+}
+
+.sheenClear {
+  stop-color: var(--white);
+  stop-opacity: 0;
+}
+
+.edgeWhite {
+  stop-color: var(--white);
+  stop-opacity: 0.85;
+}
+
+.edgeRose {
+  stop-color: var(--metal-pink);
+  stop-opacity: 0.46;
+}
+
+.edgeClear {
+  stop-color: var(--white);
+  stop-opacity: 0.08;
+}
+
+/* Glass fragments */
+
+.glassWhite {
+  stop-color: var(--white);
+  stop-opacity: 0.52;
+}
+
+.glassRose {
+  stop-color: var(--rosewater-100);
+  stop-opacity: 0.18;
+}
+
+.glassClear {
+  stop-color: var(--white);
+  stop-opacity: 0.03;
+}
+
+.glassEdgeWhite {
+  stop-color: var(--white);
+  stop-opacity: 0.92;
+}
+
+.glassEdgeRose {
+  stop-color: var(--blush-200);
+  stop-opacity: 0.45;
+}
+
+.glassEdgeClear {
+  stop-color: var(--white);
+  stop-opacity: 0.18;
+}
+
+/* Digital signal details */
+
+.ringWhite {
+  stop-color: var(--white);
+  stop-opacity: 0.92;
+}
+
+.ringSilver {
+  stop-color: #d6cfdf;
+  stop-opacity: 0.8;
+}
+
+.ringPlum {
+  stop-color: #5c164f;
+  stop-opacity: 0.62;
+}
+
+.ringRose {
+  stop-color: #ff5ab5;
+  stop-opacity: 0.68;
+}
+
+.cursorWhite {
+  stop-color: var(--white);
+}
+
+.cursorSilver {
+  stop-color: var(--chrome-100);
+}
+
+.cursorGrey {
+  stop-color: var(--chrome-500);
+}
+
+.cursorPlum {
+  stop-color: var(--plum-700);
+}
+
+.playWhite {
+  stop-color: var(--white);
+}
+
+.playRose {
+  stop-color: var(--metal-pink);
+}
+
+.playSilver {
+  stop-color: var(--chrome-300);
+}
+
+.playPlum {
+  stop-color: var(--plum-950);
+}
+
+.contactDeep {
+  stop-color: var(--plum-950);
+  stop-opacity: 0.34;
+}
+
+.contactMid {
+  stop-color: var(--plum-950);
+  stop-opacity: 0.12;
+}
+
+.contactClear {
+  stop-color: var(--plum-950);
+  stop-opacity: 0;
+}
+
+/* Filters */
+
+.shadow {
+  flood-color: var(--plum-950);
+  flood-opacity: 0.34;
+}
+
+.glassShadow {
+  flood-color: var(--plum-700);
+  flood-opacity: 0.12;
+}
+
+/* Editorial annotation */
+
+.microLabel {
+  fill: var(--plum-700);
+  font-family: var(--font-body);
+  font-size: 8.5px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.18em;
+  opacity: 0.56;
+}
+
+@media (max-width: 640px) {
+  .secondary {
+    display: none;
+  }
+}
