@@ -35,12 +35,23 @@ body {
 }
 
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
   color: var(--color-text-muted);
   font-size: var(--text-label);
   font-weight: var(--weight-semibold);
+  gap: 0.55rem;
   letter-spacing: var(--tracking-label);
   line-height: 1.4;
   text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 0.45rem;
+  height: 0.45rem;
+  flex: 0 0 auto;
+  background: var(--color-accent);
+  content: '';
 }
 
 section[id] {
@@ -55,6 +66,12 @@ p,
 figure,
 blockquote {
   margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 ul,
@@ -104,9 +121,9 @@ a {
   left: var(--space-3);
   z-index: var(--z-skip-link);
   padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-pill);
-  background: var(--color-text);
-  color: var(--color-bg);
+  border: 1px solid var(--ink-950);
+  background: var(--ink-950);
+  color: var(--paper-50);
   font-size: var(--text-small);
   font-weight: var(--weight-semibold);
   text-decoration: none;

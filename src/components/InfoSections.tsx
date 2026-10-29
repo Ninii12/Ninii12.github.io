@@ -3,7 +3,7 @@ import { Link } from './RouteLink'
 import styles from './InfoSections.module.css'
 
 const aboutIntro =
-  'I’m an aspiring Social Media Strategist interested in the space between what brands want to say and what audiences actually need. This page is about how I think, what I’m building and where I want to go next.'
+  'I’m a Social Media Strategist / Manager interested in the space between what brands want to say and what audiences actually need. This page is about how I think, what I’m building and where I want to go next.'
 
 const principles = [
   {

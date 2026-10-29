@@ -9,7 +9,7 @@ export default function WorkSection() {
       <div className={styles.inner}>
         <div className={styles.heading}>
           <div>
-            <p className="eyebrow">The work / 01–05</p>
+            <p className="eyebrow">Index / 01—05</p>
             <h2 id="work-title" className={styles.title}>
               Five concept worlds.
               <span>One strategic point of view.</span>

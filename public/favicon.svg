@@ -1,21 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nancy Lawrance R. pearl mark">
-  <defs>
-    <radialGradient id="pearl" cx="34%" cy="28%" r="74%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="38%" stop-color="#fff9f4"/>
-      <stop offset="76%" stop-color="#f6dde4"/>
-      <stop offset="100%" stop-color="#e3bcc9"/>
-    </radialGradient>
-    <linearGradient id="chrome" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f2f0f2"/>
-      <stop offset="35%" stop-color="#8e8a94"/>
-      <stop offset="58%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#c9c6cc"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="32" fill="#fff9f4"/>
-  <circle cx="32" cy="33" r="19" fill="url(#pearl)"/>
-  <circle cx="32" cy="33" r="19" fill="none" stroke="url(#chrome)" stroke-width="1.5" opacity=".8"/>
-  <path d="M47 11c1.2 5 2.3 6.1 7.3 7.3-5 1.2-6.1 2.3-7.3 7.3-1.2-5-2.3-6.1-7.3-7.3 5-1.2 6.1-2.3 7.3-7.3Z" fill="#f4c27a"/>
-  <ellipse cx="26" cy="27" rx="5" ry="3.2" transform="rotate(-28 26 27)" fill="#ffffff" opacity=".78"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nancy Lawrance R. monogram">
+  <rect width="64" height="64" fill="#0a0a0a"/>
+  <rect x="4" y="4" width="56" height="56" fill="none" stroke="#fbf9f4" stroke-opacity=".26"/>
+  <text x="11" y="47" font-family="Georgia, 'Times New Roman', serif" font-size="42" fill="#fbf9f4">N</text>
+  <rect x="51" width="13" height="24" fill="#ff2e88"/>
 </svg>

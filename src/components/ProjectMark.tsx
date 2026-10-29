@@ -22,14 +22,13 @@ export default function ProjectMark({
       data-project={accent}
       aria-hidden="true"
     >
-      <span className={styles.glow} />
-      <span className={styles.grid} />
-      <span className={styles.orbit} />
-      <span className={styles.orbitSecondary} />
-      <span className={styles.disc} />
-      <span className={styles.spark} />
+      <span className={styles.texture} />
+      <span className={styles.frame} />
+      <span className={styles.kicker}>Concept study</span>
       <span className={styles.index}>{index}</span>
-      <span className={styles.caption}>Concept study</span>
+      <span className={styles.rule} />
+      <span className={styles.caption}>Portfolio / 2026</span>
+      <span className={styles.accent} />
     </div>
   )
 }

@@ -6,7 +6,7 @@
 
 .about {
   padding-block: var(--section-y-lg);
-  border-block: var(--border-hairline);
+  border-block: 1px solid var(--ink-950);
   background: var(--color-bg-alt);
 }
 
@@ -27,13 +27,13 @@
   letter-spacing: var(--tracking-h1);
   line-height: var(--leading-tight);
   font-variation-settings:
-    'SOFT' 30,
-    'WONK' 1;
+    'SOFT' 0,
+    'WONK' 0;
 }
 
 .aboutTitle span {
   display: block;
-  color: var(--color-accent);
+  color: var(--ink-950);
   font-style: italic;
   font-weight: var(--weight-regular);
 }
@@ -55,13 +55,22 @@
   margin-top: var(--space-5);
   padding-bottom: 0.2rem;
   border-bottom: 1px solid var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-text);
   font-size: var(--text-label);
   font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-label);
   line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.textLink:hover,
+.textLink:focus-visible {
+  border-color: var(--color-accent-ink);
+  color: var(--color-accent-ink);
 }
 
 .textLink span {
@@ -78,7 +87,7 @@
   gap: var(--space-7) var(--space-8);
   margin-top: var(--space-8);
   padding-top: var(--space-7);
-  border-top: var(--border-hairline);
+  border-top: 1px solid var(--ink-950);
   grid-template-columns: minmax(13rem, 0.36fr) minmax(0, 1fr);
 }
 
@@ -89,7 +98,12 @@
 .facts dl {
   display: grid;
   margin-top: var(--space-4);
-  gap: var(--space-4);
+  gap: 0;
+}
+
+.facts dl > div {
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
 }
 
 .facts dt {
@@ -102,7 +116,7 @@
 }
 
 .facts dd {
-  margin: 0.25rem 0 0;
+  margin: 0.3rem 0 0;
   color: var(--color-text);
   font-size: var(--text-small);
   line-height: var(--leading-relaxed);
@@ -112,7 +126,7 @@
   max-width: 18rem;
   padding-top: var(--space-4);
   margin-top: var(--space-5);
-  border-top: var(--border-hairline);
+  border-top: 1px solid var(--ink-950);
   color: var(--color-text-muted);
   font-size: var(--text-caption);
   line-height: var(--leading-relaxed);
@@ -142,18 +156,18 @@
 
 .principles li {
   padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 1px solid var(--ink-950);
 }
 
 .principleIndex {
-  color: var(--color-accent);
+  color: var(--color-heading);
   font-family: var(--font-display);
   font-size: var(--text-h4);
   letter-spacing: -0.03em;
   line-height: 1;
   font-variation-settings:
-    'SOFT' 30,
-    'WONK' 1;
+    'SOFT' 0,
+    'WONK' 0;
 }
 
 .principles h3 {
@@ -165,8 +179,8 @@
   letter-spacing: var(--tracking-h3);
   line-height: var(--leading-snug);
   font-variation-settings:
-    'SOFT' 30,
-    'WONK' 1;
+    'SOFT' 0,
+    'WONK' 0;
 }
 
 .principles p {
@@ -178,8 +192,9 @@
 
 .contact {
   padding-block: var(--section-y-lg);
-  background: var(--plum-950);
-  color: var(--pearl-50);
+  border-top: 1px solid var(--ink-950);
+  background: var(--ink-950);
+  color: var(--paper-50);
 }
 
 .contactGrid {
@@ -192,20 +207,20 @@
 
 .contactTitle {
   max-width: 12ch;
-  color: var(--pearl-50);
+  color: var(--paper-50);
   font-family: var(--font-display);
   font-size: var(--text-h1);
   font-weight: var(--weight-medium);
   letter-spacing: var(--tracking-h1);
   line-height: var(--leading-tight);
   font-variation-settings:
-    'SOFT' 30,
-    'WONK' 1;
+    'SOFT' 0,
+    'WONK' 0;
 }
 
 .contactTitle span {
   display: block;
-  color: var(--rosewater-100);
+  color: var(--color-accent);
   font-style: italic;
   font-weight: var(--weight-regular);
 }
@@ -223,14 +238,23 @@
   gap: var(--space-3);
   margin-top: var(--space-5);
   padding-bottom: 0.25rem;
-  border-bottom: 1px solid rgba(255, 249, 244, 0.48);
-  color: var(--pearl-50);
+  border-bottom: 1px solid rgba(251, 249, 244, 0.48);
+  color: var(--paper-50);
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2.6rem);
   font-weight: var(--weight-regular);
   letter-spacing: -0.03em;
   line-height: 1.1;
   text-decoration: none;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.email:hover,
+.email:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .email svg {
@@ -262,20 +286,23 @@
   align-items: center;
   gap: 0.55rem;
   padding-bottom: 0.2rem;
-  border-bottom: 1px solid rgba(255, 249, 244, 0.28);
-  color: var(--pearl-50);
+  border-bottom: 1px solid rgba(251, 249, 244, 0.28);
+  color: var(--paper-50);
   font-size: var(--text-label);
   font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-label);
   line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .contactLinks a:hover,
 .contactLinks a:focus-visible {
-  border-color: var(--rosewater-100);
-  color: var(--rosewater-100);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .contactFooter {
@@ -285,7 +312,7 @@
   gap: var(--space-3) var(--space-5);
   padding-top: var(--space-5);
   margin-top: var(--space-8);
-  border-top: 1px solid rgba(255, 249, 244, 0.18);
+  border-top: 1px solid rgba(251, 249, 244, 0.2);
   color: var(--color-inverse-muted);
   font-size: var(--text-label);
   font-weight: var(--weight-medium);

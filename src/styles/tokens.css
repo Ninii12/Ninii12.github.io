@@ -1,149 +1,97 @@
 /* =========================================================
-   The Charm Archive — design tokens
+   Nancy Lawrance R. — editorial design tokens
    ---------------------------------------------------------
-   This file defines values only. The homepage consumes these
-   tokens; later sections should extend the same system rather
-   than introduce one-off values.
+   Warm paper, near-black ink, one electric-pink accent.
+   Flat surfaces, hairline rules and sharp editorial edges.
    ========================================================= */
 
 :root {
   /* -------------------------------------------------------
-     Color primitives
+     Colour primitives
      ------------------------------------------------------- */
 
-  /* Deep plum */
-  --plum-950: #1e0f19;
-  --plum-900: #2a1522;
-  --plum-700: #5a3a4e;
+  --paper-50: #fbf9f4;
+  --paper-100: #f3f0e8;
+  --paper-200: #e9e4da;
+  --paper-300: #d8d2c7;
 
-  /* Pearl and cream */
-  --pearl-50: #fff9f4;
-  --cream-100: #f7efe6;
+  --ink-950: #0a0a0a;
+  --ink-900: #151515;
+  --ink-700: #383633;
+  --ink-500: #615d57;
+  --ink-400: #7c7770;
 
-  /* Pink family */
-  --rosewater-100: #f6dde4;
-  --blush-200: #f2b8c6;
-  --rose-500: #b23a64;
-  --rose-600: #a62c55;
-  --rose-700: #8e2a4e;
-
-  /* Chrome and liquid-metal reflections */
-  --chrome-100: #f2f0f2;
-  --chrome-300: #c9c6cc;
-  --chrome-500: #8e8a94;
-  --metal-white: #ffffff;
-  --metal-silver: #eee7ef;
-  --metal-pink: #ff8bc9;
-  --metal-magenta: #ff3d9e;
-  --metal-violet: #9a72ff;
-  --metal-ice: #55e6ff;
-
-  /* Project accents — quiet tints, not separate color themes */
-  --beauty-500: #b45b76;
-  --pet-500: #b5825d;
-  --mint-300: #a4c6bd;
-  --fintech-600: #547f78;
-  --tech-500: #766b96;
-  --travel-500: #a87961;
-  --gold-300: #f4c27a;
+  --pink-500: #ff2e88;
+  --pink-600: #e9006c;
+  --pink-700: #bd0058;
 
   --white: #ffffff;
 
   /* -------------------------------------------------------
-     Semantic colors
+     Semantic colours
      ------------------------------------------------------- */
 
-  --color-bg: var(--pearl-50);
-  --color-bg-alt: var(--cream-100);
-  --color-bg-rose: var(--rosewater-100);
+  --color-bg: var(--paper-100);
+  --color-bg-alt: var(--paper-200);
+  --color-bg-rose: var(--paper-200);
 
-  --color-surface: var(--pearl-50);
-  --color-surface-raised: #fffdfb;
-  --color-surface-glass: rgba(255, 249, 244, 0.55);
-  --color-surface-glass-strong: rgba(255, 249, 244, 0.78);
+  --color-surface: var(--paper-50);
+  --color-surface-raised: var(--paper-50);
+  --color-surface-glass: rgba(251, 249, 244, 0.78);
+  --color-surface-glass-strong: rgba(251, 249, 244, 0.92);
 
-  --color-text: var(--plum-900);
-  --color-text-muted: var(--plum-700);
-  --color-heading: var(--plum-900);
+  --color-text: var(--ink-950);
+  --color-text-muted: var(--ink-500);
+  --color-heading: var(--ink-950);
 
-  --color-accent: var(--rose-600);
-  --color-accent-hover: var(--rose-700);
-  --color-accent-decorative: var(--rose-500);
+  --color-accent: var(--pink-500);
+  --color-accent-hover: var(--pink-600);
+  --color-accent-ink: var(--pink-700);
+  --color-accent-decorative: var(--pink-500);
 
-  --color-border: rgba(42, 21, 34, 0.14);
-  --color-border-strong: rgba(42, 21, 34, 0.24);
-  --color-border-glass: rgba(255, 255, 255, 0.72);
-  --color-border-chrome: rgba(201, 198, 204, 0.8);
+  --color-border: rgba(10, 10, 10, 0.18);
+  --color-border-strong: rgba(10, 10, 10, 0.42);
+  --color-border-glass: rgba(255, 255, 255, 0.7);
+  --color-border-chrome: rgba(255, 255, 255, 0.3);
 
-  --color-focus: var(--rose-600);
-  --color-focus-inverse: var(--pearl-50);
+  --color-focus: var(--ink-950);
+  --color-focus-inverse: var(--paper-50);
   --focus-ring-width: 2px;
   --focus-ring-offset: 3px;
 
-  --color-inverse-bg: var(--plum-950);
-  --color-inverse-text: var(--pearl-50);
-  --color-inverse-muted: #d9c3ca;
+  --color-inverse-bg: var(--ink-950);
+  --color-inverse-text: var(--paper-50);
+  --color-inverse-muted: #b8b2a8;
 
-  --color-scrim: rgba(30, 15, 25, 0.55);
-  --color-disabled: rgba(42, 21, 34, 0.38);
+  --color-scrim: rgba(10, 10, 10, 0.72);
+  --color-disabled: rgba(10, 10, 10, 0.34);
 
-  --color-selection-bg: var(--rose-600);
-  --color-selection-text: var(--pearl-50);
+  --color-selection-bg: var(--pink-500);
+  --color-selection-text: var(--ink-950);
 
   /* -------------------------------------------------------
-     Gradients and material effects
+     Editorial gradients and textures
      ------------------------------------------------------- */
 
   --gradient-chrome: linear-gradient(
     135deg,
-    #f2f0f2 0%,
-    #8e8a94 28%,
-    #ffffff 48%,
-    #b9b6be 62%,
-    #f2f0f2 100%
+    var(--paper-50),
+    var(--paper-200)
   );
 
-  --gradient-pearl: radial-gradient(
-    circle at 32% 26%,
-    #ffffff 0%,
-    #fff9f4 42%,
-    #e7d4da 78%,
-    #c9b4bc 100%
-  );
+  --gradient-pearl: var(--paper-50);
 
-  --gradient-hero: radial-gradient(
-    ellipse at 70% 38%,
-    #f6dde4 0%,
-    #fff9f4 52%,
-    #f7efe6 100%
-  );
+  --gradient-hero: var(--color-bg);
 
-  --gradient-rose-glow: radial-gradient(
-    circle,
-    rgba(242, 184, 198, 0.55) 0%,
-    rgba(242, 184, 198, 0) 70%
-  );
+  --gradient-rose-glow: none;
 
-  --gradient-glass: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.55),
-    rgba(255, 249, 244, 0.18)
-  );
+  --gradient-glass: none;
 
   --gradient-metal-text: linear-gradient(
-    102deg,
-    #360a27 0%,
-    #8f0e56 9%,
-    #f4147e 20%,
-    #ff58ad 30%,
-    #ffd2e8 39%,
-    var(--metal-white) 44%,
-    #ffb0d8 48%,
-    #ff2e96 55%,
-    #b65cff 66%,
-    var(--metal-ice) 76%,
-    #d41a86 87%,
-    #4a0d38 100%
+    100deg,
+    var(--pink-600),
+    var(--pink-500) 48%,
+    var(--pink-700)
   );
 
   /* -------------------------------------------------------
@@ -159,33 +107,33 @@
   --weight-medium: 500;
   --weight-semibold: 600;
 
-  --fraunces-soft: 30;
-  --fraunces-wonk: 1;
+  --fraunces-soft: 0;
+  --fraunces-wonk: 0;
 
-  --leading-none: 0.9;
-  --leading-tight: 0.95;
-  --leading-snug: 1.1;
+  --leading-none: 0.82;
+  --leading-tight: 0.94;
+  --leading-snug: 1.08;
   --leading-normal: 1.5;
-  --leading-relaxed: 1.65;
+  --leading-relaxed: 1.62;
 
-  --tracking-display: -0.04em;
-  --tracking-h1: -0.035em;
-  --tracking-h2: -0.025em;
-  --tracking-h3: -0.015em;
-  --tracking-label: 0.14em;
+  --tracking-display: -0.055em;
+  --tracking-h1: -0.045em;
+  --tracking-h2: -0.035em;
+  --tracking-h3: -0.02em;
+  --tracking-label: 0.16em;
 
-  --text-display: clamp(3.5rem, 10.5vw, 10rem);
-  --text-h1: clamp(2.75rem, 6.5vw, 6rem);
-  --text-h2: clamp(2rem, 4.2vw, 3.75rem);
-  --text-h3: clamp(1.5rem, 2.4vw, 2.25rem);
+  --text-display: clamp(3.75rem, 11vw, 11rem);
+  --text-h1: clamp(2.75rem, 6.8vw, 6.5rem);
+  --text-h2: clamp(2rem, 4.4vw, 4rem);
+  --text-h3: clamp(1.5rem, 2.5vw, 2.4rem);
   --text-h4: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
-  --text-quote: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem);
-  --text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+  --text-quote: clamp(1.65rem, 1.15rem + 1.7vw, 2.9rem);
+  --text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.45rem);
   --text-body: clamp(1rem, 0.92rem + 0.25vw, 1.125rem);
-  --text-small: 0.875rem;
-  --text-caption: 0.75rem; /* 12px minimum for supporting copy */
-  --text-label: 0.6875rem; /* 11px minimum for uppercase utility labels */
-  --text-button: 0.9375rem;
+  --text-small: 0.9375rem;
+  --text-caption: 0.8125rem;
+  --text-label: 0.6875rem;
+  --text-button: 0.8125rem;
   --text-index: clamp(4rem, 10vw, 12rem);
 
   --container-text: 65ch;
@@ -213,11 +161,11 @@
      Layout
      ------------------------------------------------------- */
 
-  --container-max: 90rem;
-  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --container-max: 92rem;
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
   --grid-gap: clamp(1rem, 2vw, 2rem);
 
-  --header-height: 5rem;
+  --header-height: 5.25rem;
   --header-height-mobile: 4rem;
 
   --section-y: clamp(4.5rem, 9vw, 9rem);
@@ -225,33 +173,33 @@
   --hero-min-height: 100svh;
 
   /* -------------------------------------------------------
-     Radii, borders, shadows, blur, opacity
+     Edges, rules, shadows
      ------------------------------------------------------- */
 
-  --radius-xs: 0.5rem;
-  --radius-sm: 0.75rem;
-  --radius-md: 1.5rem;
-  --radius-lg: 1.75rem;
-  --radius-xl: 2.5rem;
-  --radius-pill: 999px;
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-pill: 0;
 
   --border-hairline: 1px solid var(--color-border);
   --border-strong: 1px solid var(--color-border-strong);
   --border-glass: 1px solid var(--color-border-glass);
   --border-chrome: 1px solid var(--color-border-chrome);
 
-  --shadow-soft: 0 24px 80px rgba(42, 21, 34, 0.12);
-  --shadow-card: 0 16px 48px rgba(42, 21, 34, 0.1);
-  --shadow-pearl: 0 8px 24px rgba(166, 44, 85, 0.12);
-  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  --shadow-focus: 0 0 0 0.25rem rgba(166, 44, 85, 0.24);
+  --shadow-soft: none;
+  --shadow-card: none;
+  --shadow-pearl: none;
+  --shadow-inset: none;
+  --shadow-focus: 0 0 0 0.2rem rgba(255, 46, 136, 0.24);
 
-  --blur-glass: 1rem;
-  --blur-glow: 4rem;
+  --blur-glass: 0;
+  --blur-glow: 0;
 
-  --opacity-muted: 0.72;
-  --opacity-disabled: 0.45;
-  --opacity-grain: 0.04;
+  --opacity-muted: 0.66;
+  --opacity-disabled: 0.4;
+  --opacity-grain: 0.035;
 
   /* -------------------------------------------------------
      Stacking order
@@ -294,48 +242,34 @@
    --------------------------------------------------------- */
 
 .theme-dark {
-  --color-bg: var(--plum-950);
-  --color-bg-alt: var(--plum-900);
-  --color-text: var(--pearl-50);
-  --color-text-muted: #d9c3ca;
-  --color-heading: var(--pearl-50);
-  --color-accent: var(--rosewater-100);
-  --color-accent-hover: var(--pearl-50);
-  --color-border: rgba(255, 249, 244, 0.18);
-  --color-border-strong: rgba(255, 249, 244, 0.3);
-  --color-focus: var(--pearl-50);
-  --color-surface-glass: rgba(255, 249, 244, 0.1);
-  --color-surface-glass-strong: rgba(255, 249, 244, 0.16);
-  --color-scrim: rgba(30, 15, 25, 0.72);
+  --color-bg: var(--ink-950);
+  --color-bg-alt: var(--ink-900);
+  --color-text: var(--paper-50);
+  --color-text-muted: var(--color-inverse-muted);
+  --color-heading: var(--paper-50);
+  --color-accent: var(--pink-500);
+  --color-accent-hover: var(--pink-500);
+  --color-accent-ink: var(--pink-500);
+  --color-border: rgba(251, 249, 244, 0.22);
+  --color-border-strong: rgba(251, 249, 244, 0.44);
+  --color-focus: var(--paper-50);
+  --color-surface: var(--ink-900);
+  --color-surface-raised: var(--ink-900);
+  --color-surface-glass: rgba(251, 249, 244, 0.08);
+  --color-surface-glass-strong: rgba(251, 249, 244, 0.14);
+  --color-scrim: rgba(10, 10, 10, 0.82);
+  --color-selection-bg: var(--pink-500);
+  --color-selection-text: var(--ink-950);
 }
 
 /* ---------------------------------------------------------
-   Project chapter accents
+   Project chapter accents — all project colour is neutral;
+   the single pink accent is reserved for editorial emphasis.
    --------------------------------------------------------- */
 
-[data-project="beauty"] {
-  --project-accent: var(--beauty-500);
-  --project-accent-soft: #f5e6eb;
-}
-
-[data-project="pet"] {
-  --project-accent: var(--pet-500);
-  --project-accent-soft: #f4ebe3;
-}
-
-[data-project="fintech"] {
-  --project-accent: var(--fintech-600);
-  --project-accent-soft: #e5efed;
-}
-
-[data-project="technology"] {
-  --project-accent: var(--tech-500);
-  --project-accent-soft: #ece9f2;
-}
-
-[data-project="travel"] {
-  --project-accent: var(--travel-500);
-  --project-accent-soft: #f3e8e2;
+[data-project] {
+  --project-accent: var(--color-accent-ink);
+  --project-accent-soft: var(--paper-200);
 }
 
 /* ---------------------------------------------------------

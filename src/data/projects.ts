@@ -421,174 +421,184 @@ export const projects: Project[] = [
     slug: 'fintech',
     index: '03',
     category: 'Fintech',
-    title: 'Making Money Conversations Clearer',
-    deck: 'A trust-first content strategy for a money-transfer app that wants to make cross-border payments feel less opaque.',
+    title: 'UPI, Without the Guesswork',
+    deck: 'A trust-first social content system for a fictional UPI payments app, built around the small checks that make everyday money in India feel clearer.',
     cardDescription:
-      'Showing the fee, the rate and the steps before someone sends money — without hype, hidden costs or pretending the product is the only answer.',
+      'Scan-and-pay demos, split-bill rituals, money requests and scam-awareness content for the moments between “pay” and “did it go through?”',
     accent: 'fintech',
-    channels: ['Instagram', 'TikTok', 'YouTube'],
+    channels: ['Instagram', 'YouTube Shorts', 'WhatsApp'],
     scenario:
-      'A hypothetical money-transfer app is preparing to reach people who send money across borders to family and friends. The category runs on trust, but the experience is often explained through fees, exchange-rate margins and arrival windows that are difficult to compare. The brand wants to be known for helping people understand the cost and the steps before they send, not for promising the lowest price or the fastest transfer.',
+      'A fictional India-first UPI app is preparing its first social campaign. It lets people scan QR codes at local shops, send money to UPI IDs or mobile numbers, split bills and request money from friends. UPI is already part of everyday life, but confidence is uneven: the gestures are familiar, while the checks around them are not always. The brand wants to be known for making payments feel legible and calm—not for cashback noise, fear-based security warnings or another wall of offers.',
     challenge: {
-      headline:
-        'People are asked to trust a service with their money before they can see how it works.',
+      headline: 'UPI is everyday. Confidence is not automatic.',
       body:
-        'Money-transfer content often leads with reassurance, speed or a headline rate. The details that matter — what the fee includes, how the exchange rate is applied, when the money may arrive and what happens if something goes wrong — are buried or treated as fine print. The brand needs to make those details approachable without giving regulated financial advice or implying a guarantee it cannot make.',
+        'The gestures are familiar: scan a QR code, enter an amount, send. The checks are less so—what to confirm before paying, why a payment request is not a payment, or what to do when a transfer is pending. The category tends to answer with offers or warnings, while the useful details sit in support pages. This concept turns the in-between moments—the pause before a scan, the awkward bill split, the fake screenshot at the counter—into clear, shareable content without giving regulated financial advice or pretending that any payment is risk-free.',
     },
     audience: [
       {
-        name: 'The first-time sender',
+        name: 'The first-time payer',
         detail:
-          'Sending money to family or friends abroad and unsure how fees, rates and arrival estimates fit together.',
+          'Uses UPI for small payments but still asks a friend to check the screen. Worried about paying the wrong person, tapping the wrong button or losing money to a scam.',
         need:
-          'A plain explanation of what happens next, with enough detail to ask a better question before pressing send.',
+          'Plain-language walkthroughs, labelled screens and a repeatable check they can use without feeling foolish.',
       },
       {
-        name: 'The regular sender',
+        name: 'The shared-expense organiser',
         detail:
-          'Makes transfers often and wants fewer surprises, clearer receipts and a reliable way to check the details.',
+          'Handles rent, trips, office lunches and group gifts, then ends up chasing people or covering the gap. Wants the money conversation to stay friendly.',
         need:
-          'Consistent explainers, practical checklists and honest language about what the app can and cannot control.',
+          'Simple split-and-request flows, clear payment status and polite reminder scripts that work in a group chat.',
       },
       {
-        name: 'The cautious researcher',
+        name: 'The neighbourhood merchant',
         detail:
-          'Compares options, reads the terms and wants to understand security and limitations before choosing a service.',
+          'Runs a kirana, salon, chai stall or small food business. Accepts QR payments but worries about fake screenshots, failed confirmations and settlement timing.',
         need:
-          'Transparent trade-offs, credible security guidance and a clear route to human support.',
+          'Payment-confirmation literacy, QR hygiene and scam-awareness content they can use at the counter.',
       },
     ],
     strategy: {
       hypothesis:
-        'If the brand explains the real cost, the path and the limits before asking for a transfer, then people may understand the trade-offs more clearly and feel more confident choosing the service.',
-      positioning: 'Money transfer that shows its working.',
-      promise: 'Clear costs. Clear steps. Fewer surprises.',
+        'If the app explains UPI through familiar Indian money moments and shows the check, the status and the next step, then people may feel more confident using it for everyday payments and more willing to share the useful explanations with the people they split money with.',
+      positioning: 'The UPI app that shows you what is happening.',
+      promise: 'Clear steps. Calmer payments.',
       personality:
-        'Calm, precise and human. A well-informed friend who reads the fine print and explains it without making you feel foolish.',
+        'Warm, quick and locally fluent. The friend who leans over and says “check the name and amount once”—without making you feel silly.',
       messages: [
-        'See the cost before you send.',
-        'The rate is part of the story.',
-        'Your questions are not naive.',
-        'Check the details. Then decide.',
+        'Scan. Check the name. Pay.',
+        'A request is not a payment.',
+        'Split the bill, not the friendship.',
+        'Pause. Check. Then trust the status.',
       ],
     },
     pillars: [
       {
-        name: 'The cost, before you send',
+        name: 'Scan, check, pay',
         description:
-          'One transfer scenario at a time: the fee, the exchange rate, the arrival estimate and the assumptions behind each example. The product appears only after the explanation.',
-        formats: 'Saveable carousels, annotated screen-recorded Reels, glossary Stories',
+          'A repeatable three-second check for QR payments: scan the code, confirm the merchant name and amount, then pay. Demos use dummy QR codes and fictional app screens; no real payment data or copied interface.',
+        formats: 'Screen-recorded Reels, annotated carousels, pinned Story highlight',
       },
       {
-        name: 'The path your money takes',
+        name: 'Send, receive, settle',
         description:
-          'What happens after someone presses send: the details being checked, the status updates they can expect and the questions to ask if something looks wrong.',
-        formats: 'Step-by-step Reels, flow carousels, checklist posts',
+          'Everyday money movement between people: sending to a UPI ID or mobile number, requesting a share, checking whether a request is pending or paid, and closing the loop without awkward chasing.',
+        formats: 'Reels, carousels, message-template posts',
       },
       {
-        name: 'Questions before you press send',
+        name: 'The counter view',
         description:
-          'The questions people hesitate to ask, answered carefully and without shame. Questions are anonymised, reviewed for accuracy and paired with a clear next step.',
-        formats: 'Comment reply Reels, Q&A carousels, Story prompts',
+          'Small-business POV: keeping the QR clean and visible, confirming payment in the app rather than from a screenshot, handling a pending payment and knowing where to get help.',
+        formats: 'Merchant POV Reels, checklist carousels, WhatsApp forwards',
       },
       {
-        name: 'Security without the scare tactics',
+        name: 'Pause before you pay',
         description:
-          'Practical guidance on protecting an account and spotting a scam, with honest limits about what the app will never ask for and when to contact support.',
-        formats: 'Explainer Reels, pinned checklists, short interview clips',
+          'Calm, non-shaming safety content: fake QR stickers, collect requests, “payment received” screenshots, OTP requests and remote-access scams. Every post ends with a specific check or an official support route, not a scare line.',
+        formats: 'Reels, saveable carousels, comment-reply videos',
+      },
+      {
+        name: 'UPI, in plain words',
+        description:
+          'A glossary for the words people see but rarely get explained: UPI ID/VPA, request vs payment, pending, failed, refund and transaction ID. Hinglish-first explanations with English captions.',
+        formats: 'Carousel glossary, Story quizzes, 30-second Reels',
       },
     ],
     concepts: [
       {
-        title: 'The fee, unpacked',
-        hook: 'The number you see is not the whole story. Here is how to read the cost of a transfer.',
+        title: 'The Three-Second Check',
+        hook: 'The QR is not the payment. The check is.',
         format:
-          'A saveable carousel built around one clearly labelled illustrative transfer. It separates the fee, the exchange rate and the estimated arrival window, then names what the example leaves out.',
-        cta: 'Save this before your next transfer.',
+          'A Reel series set at a chai stall, salon and kirana counter. Each 20–30 second episode uses a dummy QR and fictional app screen: scan, read the merchant name, confirm the amount, pay, then show where the status appears. Cutdowns become carousel slides and a pinned Story checklist.',
+        cta: 'Save the check. Use it at your next counter.',
         detail:
-          'The concept treats clarity as the hook. It avoids “lowest fee” claims and shows the assumptions that would need to be checked in the product. A final slide points to the support route for questions.',
+          'A campaignable format rather than a one-off post: the same three-beat structure can run across languages and merchant types. No real QR codes, UPI IDs or phone numbers appear on screen.',
       },
       {
-        title: 'Before you press send',
-        hook: 'Five details worth checking before the money leaves your account.',
+        title: 'Split It, Don’t Spoil It',
+        hook: 'The bill is split. The awkwardness does not have to be.',
         format:
-          'A short screen-recorded Reel with captions and dummy data: recipient details, fee, rate, arrival estimate and the route to help. The checklist is also published as a text carousel.',
-        cta: 'Save the checklist and come back when you are ready.',
+          'A carousel and Reel about group expenses: who paid, what each person owes, how to send a request, how to check if it is settled, and a polite reminder script. Uses a fictional trip or office-lunch scenario, dummy amounts and a dummy UPI ID.',
+        cta: 'Send this to the group chat before the next dinner.',
         detail:
-          'The content gives the audience a useful action whether or not they choose the brand. The demonstration uses dummy data and makes the difference between an estimate and a guarantee explicit.',
+          'Turns a product flow into a social ritual. The content addresses the emotional friction of asking for money and makes the request and status check feel normal, without turning friends into debt collectors.',
       },
       {
-        title: 'The question people whisper',
-        hook: '“Is it safe to send money to family abroad?” A calm place to start.',
+        title: 'That Screenshot Is Not a Payment',
+        hook: 'A green tick on someone else’s phone is not your confirmation.',
         format:
-          'A reply Reel or short explainer that separates account security, scam awareness and the limits of any transfer service. The answer includes when to stop and contact support.',
-        cta: 'Send this to someone who is about to make their first transfer.',
+          'A 30-second Reel and saveable carousel reenacting a fake payment screenshot at a shop counter. Shows what to check in the app, why a screenshot is not proof, and how to pause and escalate without accusing the customer.',
+        cta: 'Save this for the counter.',
         detail:
-          'The format is designed to make a difficult question askable. It does not promise that a transfer is risk-free; it shows the checks a person can make and the questions the brand should be able to answer.',
+          'Scam-awareness content that protects both payer and merchant. It avoids victim-blaming and never promises that any app can eliminate fraud.',
       },
     ],
     measurement: [
       {
-        question: 'Can someone explain the difference between the fee and the exchange rate after seeing the post?',
+        question:
+          'Can someone explain the difference between a payment request and a completed payment after seeing the post?',
         method:
-          'Short comprehension conversations using a dummy transfer example. Ask people to describe the cost in their own words.',
+          'Short comprehension conversations using dummy request and success screens. Ask people to describe what has and has not happened in their own words.',
       },
       {
-        question: 'Do comments show confusion, trust or a better question?',
+        question:
+          'Can viewers repeat the scan-check-pay sequence without prompting?',
         method:
-          'Lightweight comment coding for questions, product interest, security concerns, confusion and criticism. Review patterns with the support team.',
+          'Show a dummy QR and ask what they would check before paying. Look for the merchant name, the amount and the payment status, not just the tap.',
       },
       {
-        question: 'Do saves and return visits suggest the checklist is useful?',
+        question:
+          'Can a merchant explain why a payment screenshot is not confirmation?',
         method:
-          'Review saves alongside return visits and comments asking for the next step. Treat the signals as directional, not as proof of understanding.',
+          'Walk through a fictional counter scenario with small merchants and ask what they would check in the app before handing over goods or closing the sale.',
       },
       {
-        question: 'Are people asking more specific, answerable questions?',
+        question:
+          'Do saves, shares and forwards suggest the split-bill content is useful in group chats?',
         method:
-          'Compare the quality of questions in comments and support conversations before and after the education series.',
+          'Review saves, shares and WhatsApp forwards alongside comments asking for the next step. Treat the signals as directional, not as proof of understanding or behaviour change.',
       },
       {
-        question: 'Does the content create trust without overpromising?',
+        question:
+          'Does the content create calm confidence without fear or false reassurance?',
         method:
-          'Ask a small group what they believe the service can and cannot do after viewing the content. Look for gaps between the intended message and what people heard.',
+          'Ask a small group what they believe the app can and cannot do after viewing the content. Review comments for confusion, victim-blaming and questions that need a support route.',
       },
     ],
     risks: [
       {
         risk: 'Content being interpreted as regulated financial advice.',
         mitigation:
-          'Keep content educational, use plain disclaimers, avoid product recommendations and route scripts through legal and compliance review in each market.',
+          'Keep content educational, use plain disclaimers, avoid product recommendations and route scripts through legal and compliance review before publication.',
       },
       {
-        risk: 'Security guidance becoming false reassurance.',
+        risk: 'Scam content that scares people or blames victims.',
         mitigation:
-          'Avoid guarantees, explain what the service will never ask for, link to verified support routes and update guidance as threats change.',
+          'Use calm, non-shaming language, show a specific check or help route, and avoid graphic fear tactics. Review sensitive scenarios with support teams.',
       },
       {
-        risk: 'Hidden fees or outdated examples undermining trust.',
+        risk: 'Visual or verbal similarity to established UPI brands.',
         mitigation:
-          'Label every example as illustrative, date operational details, show the assumptions and review rates and arrival estimates before reuse.',
+          'Build a distinct identity from scratch. Do not reuse competitor logos, colour systems, icons, interface layouts or campaign lines; run a brand-similarity and legal review before publishing.',
       },
       {
-        risk: 'Oversimplification hiding important trade-offs.',
+        risk: 'Dummy demos mistaken for real payments or current product behaviour.',
         mitigation:
-          'Give a usable answer first, then name the limitation. Link to fuller guidance and invite questions rather than pretending a transfer is simple.',
+          'Label every demo, use dummy QR codes, UPI IDs and phone numbers, date all UI examples and review status language with product and compliance.',
       },
       {
-        risk: 'Accessibility barriers in financial content.',
+        risk: 'Language, access and cultural flattening.',
         mitigation:
-          'Caption every video, provide text summaries, use plain-language definitions and check colour contrast in charts and tables.',
+          'Treat Hinglish and regional language as creative decisions, not decoration. Test with diverse users, caption every video, provide text summaries and check contrast and plain-language clarity.',
       },
     ],
     reflection:
-      'Trust is not a visual style. It is knowing what will happen, what it will cost and who to ask when something goes wrong. The most useful content in this category may not look like a campaign at all: it may look like a clear checklist, a labelled example and a patient answer to a question someone was embarrassed to ask.',
+      'UPI has made paying feel instant. Trust still takes a moment. The social opportunity is not to make people more scared or more casual; it is to make the pause between scanning and paying feel normal, informed and shareable. A payment app’s content can teach the checks, but the product still has to make the status, the receipt and the help route easy to find.',
     nextSteps: [
-      'Interview first-time and regular senders about the questions they ask before a transfer.',
-      'Map the questions the support team hears most often and identify where the content is missing.',
-      'Build a compliance and claims checklist with a qualified reviewer before producing any education content.',
-      'Test the fee explainer for comprehension with a small external group using dummy data.',
-      'Audit the first set of examples so every rate, fee and arrival estimate is dated and clearly illustrative.',
+      'Interview first-time UPI users, shared-expense organisers and small merchants across at least two language contexts.',
+      'Audit the fictional app’s payment, request, pending, failed and support flows with product, compliance and legal.',
+      'Build a dummy-content kit—QR, UPI ID, mobile number and status screens—with no real data and visible demo labels.',
+      'Prototype the three Reels and two carousels, then test comprehension, tone and shareability with a small external group.',
+      'Run brand-similarity, claims and accessibility reviews before any publication, and date every UI example.',
     ],
   },
   {
