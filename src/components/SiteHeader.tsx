@@ -18,12 +18,12 @@ export default function SiteHeader() {
         <Link
           className={styles.brand}
           href="/"
-          aria-label="Nancy Lawrance R., back to top"
+          aria-label="Nancy Lawrance, back to top"
         >
           <span className={styles.monogram} aria-hidden="true">
             N
           </span>
-          <span className={styles.name}>Nancy Lawrance R.</span>
+          <span className={styles.name}>Nancy Lawrance</span>
         </Link>
 
         <nav className={styles.nav} aria-label="Main navigation">

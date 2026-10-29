@@ -1,5 +1,5 @@
 export const site = {
-  name: 'Nancy Lawrance R.',
+  name: 'Nancy Lawrance',
   email: 'nancylaw1205@gmail.com',
   github: 'https://github.com/Ninii12',
   title: 'Social Media Strategist / Manager',
