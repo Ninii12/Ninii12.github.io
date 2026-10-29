@@ -173,16 +173,6 @@ export default function CharmHero() {
               ))}
             </ul>
 
-            <a
-              className={styles.scrollCue}
-              href="#work"
-              data-hero-scroll-cue
-              aria-label="Scroll to the work index"
-            >
-              <span>Scroll</span>
-              <span className={styles.scrollLine} aria-hidden="true" />
-              <span className={styles.scrollDot} aria-hidden="true" />
-            </a>
           </div>
         </div>
 
