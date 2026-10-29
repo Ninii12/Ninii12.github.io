@@ -39,7 +39,6 @@ export default function CharmHero() {
                 <span className={styles.nameLine}>Nancy</span>{' '}
                 <span className={styles.nameLine}>
                   <span className={styles.nowrap}>Lawrance</span>{' '}
-                  <span className={styles.nameInitial}>R.</span>
                 </span>
               </p>
               <p className={styles.role} data-hero-role>
@@ -154,13 +153,6 @@ export default function CharmHero() {
                 <div className={styles.artScroll} data-hero-art-scroll>
                   <HeroCover />
                 </div>
-                <figcaption
-                  className={styles.caption}
-                  data-hero-caption
-                >
-                  <span className={styles.captionLabel}>Fig. 01</span>
-                  <span>Cover study / type, rule, monochrome</span>
-                </figcaption>
               </figure>
             </div>
           </div>
