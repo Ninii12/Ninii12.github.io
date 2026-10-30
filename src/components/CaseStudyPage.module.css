@@ -1,7 +1,8 @@
 .page {
   position: relative;
   padding-bottom: 0;
-  background: var(--color-bg);
+  /* The water canvas provides this layer's colour now. */
+  background: transparent;
 }
 
 .inner {
@@ -13,7 +14,8 @@
 .hero {
   padding-block: var(--space-5) var(--space-8);
   border-bottom: 1px solid var(--ink-950);
-  background: var(--color-bg);
+  /* The water canvas provides this layer's colour now. */
+  background: transparent;
 }
 
 .heroBar {

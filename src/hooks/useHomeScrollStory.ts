@@ -1,18 +1,220 @@
 import { useLayoutEffect, type RefObject } from 'react'
+import type { ScrollSceneTools } from '../lib/scroll'
 import {
   compactMotionQuery,
   createMediaScene,
   desktopMotionQuery,
 } from '../lib/scroll'
 
+type OrbitProfile = {
+  /** Revolutions each jelly completes across the hero scroll range. */
+  turns: number
+  /** Orbit radius, fitted to the stage box: r = min(radiusW·W, radiusH·H). */
+  radiusW: number
+  radiusH: number
+  /** Gentle bell lean toward the direction of travel, in radians. */
+  lean: number
+  /** Vertical bob amplitude, in percent of each figure's own height. */
+  bob: number
+}
+
+const DESKTOP_ORBIT: OrbitProfile = {
+  turns: 1.5,
+  radiusW: 0.34,
+  radiusH: 0.42,
+  lean: 0.36,
+  bob: 1.3,
+}
+
+const COMPACT_ORBIT: OrbitProfile = {
+  turns: 1,
+  radiusW: 0.4,
+  radiusH: 0.42,
+  lean: 0.36,
+  bob: 1.5,
+}
+
+/**
+ * The bell's centre sits just under a third of the way down the figure, so
+ * centring the whole box on the shared circle would swing the bells on
+ * smaller private circles. This offset — the gap between a bell centre and
+ * its box centre — lets the driver park the *bell* itself on the track.
+ */
+const BELL_DROP = 0.1875
+
+/**
+ * Opening angles: A starts upper-left, B lower-right — diametrically
+ * opposite on the shared circle, like the bound pair of the Pisces glyph.
+ */
+const ANGLE_A = -2.7925 // ~-160°
+const ANGLE_B = 0.3491 // ~+20°
+
+/**
+ * Drives the two jellyfish around one shared circular track as the hero
+ * scrolls — a Pisces-style pair: A circles clockwise, B counter-clockwise,
+ * half a turn apart, so their angles close twice per revolution and they
+ * meet, cross, and part again — two fish chasing each other's wake.
+ *
+ * The track spans most of the stage, so the bells genuinely travel across
+ * the X/Y plane, while each body only leans a few degrees toward its
+ * direction of travel — a circular dance, never a spin. Scale stays constant
+ * because size changes masquerade as depth; the scrub stays smoothed for
+ * fast and slow scrolling alike; and the depth swap only fires where the two
+ * figures actually overlap — at the crossings, where they are superimposed,
+ * and opposite each other, where they are apart — so the leader alternates
+ * on every pass without a visible jump.
+ */
+function attachJellyOrbit(
+  { gsap, ScrollTrigger }: ScrollSceneTools,
+  trigger: Element,
+  railA: Element | null,
+  railB: Element | null,
+  profile: OrbitProfile,
+) {
+  if (!railA || !railB) return
+
+  const jellyA = railA.parentElement
+  const jellyB = railB.parentElement
+  if (
+    !(jellyA instanceof HTMLElement) ||
+    !(jellyB instanceof HTMLElement) ||
+    jellyA.offsetParent !== jellyB.offsetParent ||
+    !(jellyA.offsetParent instanceof HTMLElement)
+  ) {
+    return
+  }
+
+  // Layout boxes only: offset* values ignore every transform, so the
+  // geometry stays exact while orbits, parallax and tilt run on top of it.
+  const stage = jellyA.offsetParent
+
+  const setter = (rail: Element, property: string) =>
+    gsap.quickSetter(rail, property) as (value: number) => void
+
+  // The figures keep a constant size: depth reads from real position and
+  // overlap order, never from scale cues.
+  const poseAx = setter(railA, 'xPercent')
+  const poseAy = setter(railA, 'yPercent')
+  const poseAr = setter(railA, 'rotation')
+
+  const poseBx = setter(railB, 'xPercent')
+  const poseBy = setter(railB, 'yPercent')
+  const poseBr = setter(railB, 'rotation')
+
+  type Box = { x: number; y: number; w: number; h: number }
+
+  const box = (jelly: HTMLElement): Box => ({
+    x: jelly.offsetLeft + jelly.offsetWidth / 2,
+    y: jelly.offsetTop + jelly.offsetHeight / 2,
+    w: jelly.offsetWidth,
+    h: jelly.offsetHeight,
+  })
+
+  let geometry = {
+    radius: Math.min(
+      stage.offsetWidth * profile.radiusW,
+      stage.offsetHeight * profile.radiusH,
+    ),
+    // Slightly below centre: leaves the bell apexes headroom at the top of
+    // the circle while the long tails still clear the archive row.
+    cx: stage.offsetWidth / 2,
+    cy: stage.offsetHeight * 0.56,
+    a: box(jellyA),
+    b: box(jellyB),
+  }
+
+  let frontIsA = true
+
+  const settleDepth = (front: boolean) => {
+    jellyA.style.zIndex = front ? '2' : '1'
+    jellyB.style.zIndex = front ? '1' : '2'
+  }
+
+  const pose = (p: number) => {
+    const { radius, cx, cy, a, b } = geometry
+    const TAU = Math.PI * 2
+
+    // Jelly A circles clockwise, B counter-clockwise, half a turn apart.
+    // The radius is constant from the first frame — the circle is the point.
+    const uA = ANGLE_A + TAU * profile.turns * p
+    const uB = ANGLE_B - TAU * profile.turns * p
+
+    const setJelly = (
+      u: number,
+      sign: number,
+      figure: Box,
+      poseX: (value: number) => void,
+      poseY: (value: number) => void,
+      poseR: (value: number) => void,
+      seed: number,
+    ) => {
+      // Position: real X/Y travel — the bell centre rides the shared circle.
+      const px = cx + Math.cos(u) * radius
+      const py = cy + Math.sin(u) * radius + BELL_DROP * figure.h
+      poseX(((px - figure.x) / figure.w) * 100)
+      poseY(
+        ((py - figure.y) / figure.h) * 100 +
+          profile.bob * Math.sin(u * 2.2 + seed * 1.7),
+      )
+
+      // Gentle lean: the bell tips toward its direction of travel — a
+      // fraction of the way, never a spin — so the figures steer with the
+      // circle while the tentacle chains trail behind the movement.
+      const lean =
+        profile.lean *
+          (-Math.sin(u) * sign + (Math.cos(u) * sign) * 0.25) +
+        0.05 * Math.sin(u * 2 + seed)
+      poseR((lean * 180) / Math.PI)
+    }
+
+    setJelly(uA, 1, a, poseAx, poseAy, poseAr, 1.1)
+    setJelly(uB, -1, b, poseBx, poseBy, poseBr, 2.9)
+
+    // Depth swap: flips exactly where the figures overlap — at the
+    // crossings, when they are superimposed, and opposite each other, when
+    // they are far apart — so the leader alternates on every pass invisibly.
+    const lap = (((uA - uB) % TAU) + TAU) % TAU
+    const wantFrontA = lap >= Math.PI
+    if (wantFrontA !== frontIsA) {
+      frontIsA = wantFrontA
+      settleDepth(wantFrontA)
+    }
+  }
+
+  const orbitTrigger = ScrollTrigger.create({
+    trigger,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 1.1,
+    onUpdate: (self) => pose(self.progress),
+    onRefresh: (self) => {
+      geometry = {
+        radius: Math.min(
+          stage.offsetWidth * profile.radiusW,
+          stage.offsetHeight * profile.radiusH,
+        ),
+        cx: stage.offsetWidth / 2,
+        cy: stage.offsetHeight * 0.56,
+        a: box(jellyA),
+        b: box(jellyB),
+      }
+      pose(self.progress)
+    },
+  })
+
+  // Match the render to the actual scroll position immediately, so there is
+  // never a visible jump between load, entrance and the first scroll pose.
+  pose(orbitTrigger.progress)
+}
+
 /**
  * Coordinates the desktop hero-to-Work scroll story and the compact,
  * unpinned version used by phones and short viewports.
  *
  * The page is never captured: scrolling stays native and each timeline uses
- * ScrollTrigger's exact `scrub: true` progress. The only input-derived effect
- * is a small decorative pink registration mark; it never changes scroll
- * position.
+ * ScrollTrigger's exact progress. The only input-derived effects are a small
+ * decorative pink flake and the jellyfish shared-circle orbit on its own
+ * scoped trigger; none of it changes scroll position.
  */
 export function useHomeScrollStory(scopeRef: RefObject<HTMLElement | null>) {
   useLayoutEffect(() => {
@@ -40,11 +242,13 @@ export function useHomeScrollStory(scopeRef: RefObject<HTMLElement | null>) {
         const actions = scope.querySelector('[data-hero-actions]')
         const art = scope.querySelector('[data-art-stage]')
         const artScroll = scope.querySelector('[data-hero-art-scroll]')
-        const caption = scope.querySelector('[data-hero-caption]')
+        const railA = scope.querySelector('[data-jelly="a"]')
+        const railB = scope.querySelector('[data-jelly="b"]')
+        const caption = scope.querySelector('[data-hero-caption]') ?? []
         const archive = scope.querySelector('[data-hero-archive]')
-        const scrollCue = scope.querySelector('[data-hero-scroll-cue]')
+        const scrollCue = scope.querySelector('[data-hero-scroll-cue]') ?? []
         const grid = scope.querySelector('[data-hero-grid]')
-        const watermark = scope.querySelector('[data-hero-watermark]')
+        const watermark = scope.querySelector('[data-hero-watermark]') ?? []
         const horizon = scope.querySelector('[data-hero-horizon]')
         const horizonLine = scope.querySelector('[data-hero-horizon-line]')
         const thresholdLine = scope.querySelector('[data-work-line]')
@@ -61,6 +265,14 @@ export function useHomeScrollStory(scopeRef: RefObject<HTMLElement | null>) {
           transformOrigin: '50% 50%',
         })
         gsap.set(flare, { opacity: 0, xPercent: 0 })
+
+        attachJellyOrbit(
+          { gsap, ScrollTrigger },
+          sequence,
+          railA,
+          railB,
+          DESKTOP_ORBIT,
+        )
 
         let settleTimer = 0
         const flareX = gsap.quickTo(flare, 'xPercent', {
@@ -214,10 +426,20 @@ export function useHomeScrollStory(scopeRef: RefObject<HTMLElement | null>) {
         const copy = scope.querySelector('[data-hero-copy]')
         const art = scope.querySelector('[data-art-stage]')
         const artScroll = scope.querySelector('[data-hero-art-scroll]')
+        const railA = scope.querySelector('[data-jelly="a"]')
+        const railB = scope.querySelector('[data-jelly="b"]')
         const grid = scope.querySelector('[data-hero-grid]')
-        const watermark = scope.querySelector('[data-hero-watermark]')
+        const watermark = scope.querySelector('[data-hero-watermark]') ?? []
 
         if (!hero) return
+
+        attachJellyOrbit(
+          { gsap, ScrollTrigger },
+          hero,
+          railA,
+          railB,
+          COMPACT_ORBIT,
+        )
 
         const compact = gsap.timeline({
           defaults: { ease: 'none' },

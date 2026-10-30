@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useHeroMotion } from '../hooks/useHeroMotion'
-import HeroCover from './HeroCover'
+import JellyfishArt from './JellyfishArt'
 import styles from './CharmHero.module.css'
 
 const chapters = ['Beauty', 'Pet', 'Fintech', 'Technology', 'Travel']
@@ -151,7 +151,7 @@ export default function CharmHero() {
             <div className={styles.art} data-art-stage>
               <figure className={styles.figure}>
                 <div className={styles.artScroll} data-hero-art-scroll>
-                  <HeroCover />
+                  <JellyfishArt />
                 </div>
               </figure>
             </div>

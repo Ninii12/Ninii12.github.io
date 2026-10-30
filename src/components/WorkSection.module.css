@@ -2,7 +2,8 @@
   position: relative;
   padding-block: var(--section-y-lg);
   border-top: 1px solid var(--ink-950);
-  background: var(--color-bg);
+  /* The water canvas provides this layer's colour now. */
+  background: transparent;
 }
 
 .inner {

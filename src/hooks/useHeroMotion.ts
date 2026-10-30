@@ -37,12 +37,14 @@ export function useHeroMotion(scopeRef: RefObject<HTMLElement | null>) {
       const intro = scope.querySelector('[data-hero-intro]')
       const actions = scope.querySelector('[data-hero-actions]')
       const artwork = scope.querySelector('[data-hero-artwork]')
-      const coverLine = scope.querySelector('[data-hero-cover-line]')
-      const coverSpine = scope.querySelector('[data-hero-cover-spine]')
+      // The old cover nodes are gone for good — JellyfishArt replaced them,
+      // and GSAP treats empty arrays as clean no-ops instead of warnings.
+      const coverLine = scope.querySelector('[data-hero-cover-line]') ?? []
+      const coverSpine = scope.querySelector('[data-hero-cover-spine]') ?? []
       const coverRegistration = scope.querySelector(
         '[data-hero-cover-registration]',
-      )
-      const caption = scope.querySelector('[data-hero-caption]')
+      ) ?? []
+      const caption = scope.querySelector('[data-hero-caption]') ?? []
       const archive = scope.querySelector('[data-hero-archive]')
 
       gsap.set(coverLine, { scaleX: 0, transformOrigin: '0% 50%' })

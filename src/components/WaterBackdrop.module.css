@@ -1,0 +1,55 @@
+/*
+ * WaterBackdrop — the fixed, site-wide water environment.
+ *
+ * It paints below every section (z-index -1 inside the untransformed app
+ * shell), so content, cards and the dark Contact panel all sit above it.
+ * The canvas is rendered at a fraction of viewport size and upscaled, which
+ * keeps frames cheap and gives the water its soft, dreamy focus.
+ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--water-base);
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ * Graceful CSS fallback when WebGL is unavailable or the context dies:
+ * a calm pearlescent wash in the same palette, and the page reads
+ * exactly as before.
+ */
+.fallback::before {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      42% 38% at 22% 16%,
+      rgba(244, 204, 210, 0.5),
+      transparent 72%
+    ),
+    radial-gradient(
+      46% 42% at 78% 28%,
+      rgba(207, 169, 232, 0.32),
+      transparent 74%
+    ),
+    radial-gradient(
+      50% 46% at 30% 70%,
+      rgba(247, 228, 200, 0.42),
+      transparent 76%
+    ),
+    radial-gradient(
+      48% 44% at 82% 80%,
+      rgba(223, 173, 173, 0.34),
+      transparent 78%
+    );
+  content: '';
+}

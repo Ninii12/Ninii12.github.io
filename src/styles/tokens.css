@@ -31,10 +31,9 @@
      Semantic colours
      ------------------------------------------------------- */
 
-  --color-bg: var(--paper-100);
-  --color-bg-alt: var(--paper-200);
-  --color-bg-rose: var(--paper-200);
-
+ --color-bg: #E8D2CE;
+--color-bg-alt: #E8D2CE;
+--color-bg-rose: #E8D2CE;
   --color-surface: var(--paper-50);
   --color-surface-raised: var(--paper-50);
   --color-surface-glass: rgba(251, 249, 244, 0.78);
@@ -93,6 +92,18 @@
     var(--pink-500) 48%,
     var(--pink-700)
   );
+
+  /* -------------------------------------------------------
+     Water environment — the site-wide pearlescent canvas
+     ------------------------------------------------------- */
+
+  --water-base: #e8d2ce;
+  --water-blush: #f4ccd2;
+  --water-rose: #dfadad;
+  --water-champagne: #f7e4c8;
+  --water-lilac: #cfa9e8;
+  --water-spec: #fffaf2;
+  --water-strength: 0.75;
 
   /* -------------------------------------------------------
      Typography

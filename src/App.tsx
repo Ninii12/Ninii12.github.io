@@ -5,6 +5,7 @@ import CaseStudyPage from './components/CaseStudyPage'
 import CharmHero from './components/CharmHero'
 import { Link } from './components/RouteLink'
 import SiteHeader from './components/SiteHeader'
+import WaterBackdrop from './components/WaterBackdrop'
 import WorkSection from './components/WorkSection'
 import { getProject } from './data/projects'
 import { useHomeScrollStory } from './hooks/useHomeScrollStory'
@@ -75,6 +76,7 @@ function App() {
 
   return (
     <div className="app-shell">
+      <WaterBackdrop />
       <a className="skip-link" href="#main">
         Skip to content
       </a>

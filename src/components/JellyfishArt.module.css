@@ -1,0 +1,315 @@
+/*
+ * JellyfishArt — two translucent jellyfish spiralling above the blush field.
+ *
+ * Every transform layer has one owner so the systems never fight:
+ *   .jelly   → pointer parallax (GSAP depth rig, [data-depth])
+ *   .rail    → scroll story braid (GSAP orbit driver, [data-jelly])
+ *   .drift   → ambient idle swim (CSS keyframes)
+ *   inside   → body tilt, bell pulse with lagging mid layer, chain waves,
+ *              ruffle, core breath, twinkle (CSS + SVG groups)
+ */
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: clamp(23rem, 52vh, 40rem);
+  pointer-events: none;
+}
+
+.jelly {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.jellyLarge {
+  z-index: 2;
+  top: 0;
+  left: 8%;
+  height: 100%;
+}
+
+.jellySmall {
+  z-index: 1;
+  top: 47%;
+  left: 48%;
+  height: 62%;
+  opacity: 0.95;
+  filter: blur(0.6px);
+}
+
+.rail,
+.driftLarge,
+.driftSmall {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.driftLarge {
+  animation: jelly-drift-a 46s ease-in-out infinite;
+}
+
+.driftSmall {
+  animation: jelly-drift-b 61s ease-in-out -21s infinite;
+}
+
+/*
+ * Low-amplitude idle swim. The scroll driver owns the visible spiral, so
+ * these only add drift while the page is still.
+ */
+@keyframes jelly-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0.8%, -1%, 0) rotate(-0.9deg);
+  }
+
+  28% {
+    transform: translate3d(3.2%, 1.8%, 0) rotate(1deg);
+  }
+
+  58% {
+    transform: translate3d(-2.6%, 3%, 0) rotate(-0.2deg);
+  }
+
+  82% {
+    transform: translate3d(-4%, -0.4%, 0) rotate(-1.1deg);
+  }
+}
+
+@keyframes jelly-drift-b {
+  0%,
+  100% {
+    transform: translate3d(-1.2%, 0.8%, 0) rotate(1.1deg);
+  }
+
+  32% {
+    transform: translate3d(-4.5%, -2.5%, 0) rotate(-0.8deg);
+  }
+
+  64% {
+    transform: translate3d(3.2%, -1.4%, 0) rotate(1.3deg);
+  }
+
+  86% {
+    transform: translate3d(4.5%, 3%, 0) rotate(0.3deg);
+  }
+}
+
+.svg {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+/* ------------------------------------------------------------------
+   Inside the SVG — transform-box keeps the origins in the geometry.
+   ------------------------------------------------------------------ */
+
+/* Whole-body see-saw: chains and ruffles hang off a body that rolls. */
+.bodyTilt {
+  transform-box: fill-box;
+  transform-origin: 50% 20%;
+  animation: jelly-tilt 11.5s ease-in-out -3s infinite alternate;
+}
+
+@keyframes jelly-tilt {
+  from {
+    transform: rotate(-2.2deg);
+  }
+
+  to {
+    transform: rotate(2.2deg);
+  }
+}
+
+/*
+ * Tentacle chains: each segment pivots at its own joint, and deeper
+ * segments carry larger amplitudes and longer periods, with per-strand
+ * phase offsets injected through --sway-delay. The result is a wave that
+ * visibly travels from rim to tip instead of a rigid group swing.
+ */
+.chainSeg {
+  transform-box: fill-box;
+  transform-origin: 50% 2%;
+  animation: jelly-wave 7.6s ease-in-out var(--sway-delay, 0s) infinite
+    alternate;
+}
+
+.seg2 {
+  --sway-amp: 5.4deg;
+  animation-duration: 8.9s;
+}
+
+.seg3 {
+  --sway-amp: 7.8deg;
+  animation-duration: 10.4s;
+}
+
+@keyframes jelly-wave {
+  from {
+    transform: rotate(calc(-1 * var(--sway-amp, 3.4deg)));
+  }
+
+  to {
+    transform: rotate(var(--sway-amp, 3.4deg));
+  }
+}
+
+/* Bell glass: gentle radial breathing around the rim. */
+.bell {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: jelly-bell-pulse 5.8s ease-in-out infinite;
+}
+
+@keyframes jelly-bell-pulse {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+
+  34% {
+    transform: scale(0.988, 1.028);
+  }
+
+  66% {
+    transform: scale(1.012, 0.978);
+  }
+}
+
+/* Mid membrane lags the rim, so the body feels layered, not rubbery. */
+.bellMid {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: jelly-bell-mid 6.4s ease-in-out -2.7s infinite;
+}
+
+@keyframes jelly-bell-mid {
+  0%,
+  100% {
+    transform: scale(0.876, 0.972);
+  }
+
+  34% {
+    transform: scale(0.9, 1.02);
+  }
+
+  66% {
+    transform: scale(0.858, 0.944);
+  }
+}
+
+/* Champagne heart breathes on its own rhythm. */
+.coreGlow {
+  animation: jelly-core 6.9s ease-in-out -1.4s infinite;
+}
+
+@keyframes jelly-core {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+
+  45% {
+    opacity: 0.96;
+  }
+}
+
+/* Pleat light shimmer — soft, slow, editorial. */
+.pleats {
+  animation: jelly-pleat 7.4s ease-in-out -2.1s infinite;
+}
+
+@keyframes jelly-pleat {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 0.92;
+  }
+}
+
+.ribA,
+.ribB,
+.ribC {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+}
+
+.ribA {
+  animation: jelly-ruffle 8.4s ease-in-out -2s infinite alternate;
+}
+
+.ribB {
+  animation: jelly-ruffle 10.6s ease-in-out -5.5s infinite alternate;
+}
+
+.ribC {
+  animation: jelly-ruffle 9.2s ease-in-out -0.8s infinite alternate;
+}
+
+@keyframes jelly-ruffle {
+  from {
+    transform: rotate(-2deg);
+  }
+
+  to {
+    transform: rotate(2.2deg);
+  }
+}
+
+.spark {
+  animation: jelly-twinkle 3.4s ease-in-out infinite;
+}
+
+@keyframes jelly-twinkle {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+
+  55% {
+    opacity: 0.95;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Compact layout and reduced motion.
+   ------------------------------------------------------------------ */
+
+@media (max-width: 980px) {
+  .stage {
+    height: clamp(20rem, 46vh, 32rem);
+  }
+
+  .jellyLarge {
+    top: 0;
+    left: 1%;
+    height: 96%;
+  }
+
+  .jellySmall {
+    top: 45%;
+    left: 46%;
+    height: 64%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .driftLarge,
+  .driftSmall,
+  .bodyTilt,
+  .chainSeg,
+  .bell,
+  .bellMid,
+  .coreGlow,
+  .pleats,
+  .ribA,
+  .ribB,
+  .ribC,
+  .spark {
+    animation: none;
+  }
+}

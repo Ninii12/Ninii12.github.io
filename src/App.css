@@ -3,7 +3,8 @@
   min-height: 100svh;
   flex-direction: column;
   overflow: clip;
-  background: var(--color-bg);
+  /* Transparent so the fixed water canvas (z -1) shows through everywhere. */
+  background: transparent;
 }
 
 .app-shell main {
@@ -20,7 +21,6 @@
 .home-work-entrance {
   position: relative;
   isolation: isolate;
-  background: var(--color-bg);
 }
 
 /*
@@ -113,7 +113,7 @@
     z-index: 2;
     margin-top: -40svh;
     border-top: 1px solid var(--ink-950);
-    background: var(--color-bg);
+    background: transparent;
     box-shadow: none;
   }
 }

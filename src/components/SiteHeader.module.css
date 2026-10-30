@@ -5,7 +5,8 @@
   min-height: var(--header-height);
   align-items: center;
   border-bottom: 1px solid var(--ink-950);
-  background: var(--color-bg);
+  /* The water canvas provides this layer's colour now. */
+  background: transparent;
 }
 
 .inner {
