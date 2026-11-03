@@ -30,7 +30,7 @@ export function AboutSection() {
       <div className={styles.inner}>
         <div className={styles.aboutTop}>
           <div>
-            <p className="eyebrow">About / 03</p>
+            <p className="eyebrow">About / 04</p>
             <h2 id="about-title" className={styles.aboutTitle}>
               Curious about people.
               <span>Deliberate about content.</span>
@@ -103,7 +103,7 @@ export function ContactSection() {
       aria-labelledby="contact-title"
     >
       <div className={styles.inner}>
-        <p className="eyebrow">Contact / 04</p>
+        <p className="eyebrow">Contact / 05</p>
 
         <div className={styles.contactGrid}>
           <h2 id="contact-title" className={styles.contactTitle}>

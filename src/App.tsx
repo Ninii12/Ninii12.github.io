@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import './App.css'
 import { AboutSection, ContactSection } from './components/InfoSections'
 import CaseStudyPage from './components/CaseStudyPage'
+import CertificationsSection from './components/CertificationsSection'
 import CharmHero from './components/CharmHero'
 import { Link } from './components/RouteLink'
 import SiteHeader from './components/SiteHeader'
@@ -85,6 +86,7 @@ function App() {
         {route.name === 'home' && (
           <>
             <HomeHeroWork />
+            <CertificationsSection />
             <AboutSection />
             <ContactSection />
           </>

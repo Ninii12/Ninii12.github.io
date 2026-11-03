@@ -1,0 +1,229 @@
+.inner {
+  width: min(calc(var(--container-max) + (var(--gutter) * 2)), 100%);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.certifications {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--ink-950);
+  /* The water canvas provides this layer's colour now. */
+  background: transparent;
+}
+
+.heading {
+  display: grid;
+  align-items: end;
+  gap: var(--space-6) var(--space-8);
+  grid-template-columns: minmax(0, 1.1fr) minmax(17rem, 0.9fr);
+}
+
+.title {
+  max-width: 13ch;
+  margin-top: var(--space-4);
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-h1);
+  line-height: var(--leading-tight);
+  font-variation-settings:
+    'SOFT' 0,
+    'WONK' 0;
+}
+
+.title span {
+  display: block;
+  color: var(--ink-950);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+}
+
+.note {
+  max-width: 34rem;
+  padding-left: var(--space-5);
+  border-left: 1px solid var(--ink-950);
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
+}
+
+.record {
+  display: grid;
+  padding-top: var(--space-7);
+  margin-top: var(--space-8);
+  border-top: 1px solid var(--ink-950);
+  gap: var(--space-6) var(--space-8);
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.75fr);
+}
+
+.recordMain {
+  padding-left: var(--space-5);
+  border-left: 3px solid var(--color-accent);
+}
+
+.kicker {
+  color: var(--color-text-muted);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.course {
+  max-width: 16ch;
+  margin-top: var(--space-3);
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 3.8rem);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-h2);
+  line-height: var(--leading-snug);
+  text-wrap: balance;
+  font-variation-settings:
+    'SOFT' 0,
+    'WONK' 0;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--space-6);
+  gap: var(--space-5) var(--space-8);
+}
+
+.meta > div {
+  min-width: 9rem;
+}
+
+.meta dt {
+  color: var(--color-text-muted);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.meta dd {
+  margin: 0.4rem 0 0;
+  color: var(--color-text);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+}
+
+.recordAside {
+  padding-left: var(--space-6);
+  border-left: 1px solid var(--color-border);
+}
+
+.coverage {
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.coverage li {
+  display: grid;
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  gap: var(--space-3);
+  grid-template-columns: auto minmax(0, 1fr);
+  font-size: var(--text-small);
+  line-height: var(--leading-relaxed);
+}
+
+.coverage li span {
+  color: var(--color-accent-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
+.pdfLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.9rem;
+  margin-top: var(--space-5);
+  border-block: 1px solid var(--ink-950);
+  color: var(--color-text);
+  gap: var(--space-4);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  line-height: 1.4;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.pdfLink .pdfMeta {
+  color: var(--color-accent-ink);
+  white-space: nowrap;
+  transition: transform var(--transition-fast);
+}
+
+.pdfLink:hover,
+.pdfLink:focus-visible {
+  color: var(--color-accent-ink);
+}
+
+.pdfLink:hover .pdfMeta,
+.pdfLink:focus-visible .pdfMeta {
+  transform: translate(0.15rem, -0.15rem);
+}
+
+@media (max-width: 900px) {
+  .heading {
+    grid-template-columns: 1fr;
+  }
+
+  .note {
+    max-width: 44rem;
+  }
+
+  .record {
+    grid-template-columns: 1fr;
+  }
+
+  .recordAside {
+    padding-top: var(--space-5);
+    padding-left: 0;
+    border-top: 1px solid var(--ink-950);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .recordMain {
+    padding-left: var(--space-4);
+  }
+
+  .meta {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .meta > div {
+    min-width: 0;
+  }
+
+  .pdfLink {
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdfLink .pdfMeta {
+    transition: none;
+  }
+
+  .pdfLink:hover .pdfMeta,
+  .pdfLink:focus-visible .pdfMeta {
+    transform: none;
+  }
+}
