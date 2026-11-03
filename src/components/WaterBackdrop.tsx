@@ -211,7 +211,7 @@ export default function WaterBackdrop() {
     const canvas = canvasRef.current
     if (!container || !canvas) return
 
-    const useFallback = () => {
+    const applyFallback = () => {
       container.classList.add(styles.fallback)
       if (canvas.parentNode) canvas.remove()
     }
@@ -226,7 +226,7 @@ export default function WaterBackdrop() {
       (canvas.getContext('experimental-webgl') as WebGLRenderingContext | null)
 
     if (!gl) {
-      useFallback()
+      applyFallback()
       return
     }
 
@@ -234,7 +234,7 @@ export default function WaterBackdrop() {
     const fragment = compileShader(gl, gl.FRAGMENT_SHADER, FRAGMENT_SRC)
     const program = gl.createProgram()
     if (!vertex || !fragment || !program) {
-      useFallback()
+      applyFallback()
       return
     }
     gl.attachShader(program, vertex)
@@ -245,7 +245,7 @@ export default function WaterBackdrop() {
         'Water backdrop: program link failed',
         gl.getProgramInfoLog(program),
       )
-      useFallback()
+      applyFallback()
       return
     }
     gl.useProgram(program)
@@ -365,7 +365,7 @@ export default function WaterBackdrop() {
     const onContextLost = (event: Event) => {
       event.preventDefault()
       stop()
-      useFallback()
+      applyFallback()
     }
 
     resize()
