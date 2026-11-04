@@ -1,5 +1,5 @@
 import { projects } from '../data/projects'
-import ProjectMark from './ProjectMark'
+import PhotoMark from './PhotoMark'
 import { Link } from './RouteLink'
 import styles from './WorkSection.module.css'
 
@@ -63,7 +63,7 @@ export default function WorkSection() {
                 </div>
 
                 <div className={styles.art}>
-                  <ProjectMark
+                  <PhotoMark
                     accent={project.accent}
                     index={project.index}
                     compact

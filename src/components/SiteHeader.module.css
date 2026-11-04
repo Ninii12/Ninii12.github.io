@@ -27,36 +27,14 @@
   text-decoration: none;
 }
 
-.monogram {
-  position: relative;
-  display: grid;
+.brandMark {
   width: 2.35rem;
   height: 2.35rem;
   flex: 0 0 auto;
-  place-items: center;
-  background: var(--ink-950);
-  color: var(--paper-50);
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: var(--weight-medium);
-  letter-spacing: -0.06em;
-  line-height: 1;
-  font-variation-settings:
-    'SOFT' 0,
-    'WONK' 0;
-}
-
-.monogram::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0.45rem;
-  height: 0.45rem;
-  background: var(--color-accent);
-  content: '';
 }
 
 .name {
+  color: var(--color-name);
   font-family: var(--font-display);
   font-size: 1.45rem;
   font-weight: var(--weight-medium);
@@ -152,10 +130,9 @@
     gap: var(--space-2);
   }
 
-  .monogram {
+  .brandMark {
     width: 2.1rem;
     height: 2.1rem;
-    font-size: 1.1rem;
   }
 
   .name {

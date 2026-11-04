@@ -74,7 +74,8 @@
   text-decoration: none;
   transition:
     background-color var(--transition-base),
-    color var(--transition-base);
+    color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 .card::before {
@@ -215,8 +216,14 @@
 
 .card:hover,
 .card:focus-visible {
-  background: var(--ink-950);
-  color: var(--paper-50);
+  background: var(--water-glow);
+  color: var(--color-text);
+  /* Pearl haze, not neon: wide blurs, low alphas, no solid ring. */
+  box-shadow:
+    0 0 0 1px rgba(255, 250, 242, 0.3),
+    0 0 18px rgba(185, 217, 233, 0.7),
+    0 0 44px 4px rgba(244, 204, 210, 0.38),
+    0 0 80px 12px rgba(207, 169, 232, 0.18);
 }
 
 .card:hover::before,
@@ -226,7 +233,7 @@
 
 .card:hover .cardTitle,
 .card:focus-visible .cardTitle {
-  color: var(--paper-50);
+  color: var(--color-heading);
 }
 
 .card:hover .index,
@@ -235,20 +242,20 @@
 .card:focus-visible .index,
 .card:focus-visible .category,
 .card:focus-visible .action {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .card:hover .deck,
 .card:hover .description,
 .card:focus-visible .deck,
 .card:focus-visible .description {
-  color: var(--color-inverse-muted);
+  color: var(--color-text-muted);
 }
 
 .card:hover .concept,
 .card:focus-visible .concept {
-  border-color: rgba(251, 249, 244, 0.4);
-  color: var(--color-inverse-muted);
+  border-color: var(--color-border-strong);
+  color: var(--color-text-muted);
 }
 
 .card:hover .action svg,
@@ -263,7 +270,7 @@
 
 .card:hover .art > *,
 .card:focus-visible .art > * {
-  border-color: var(--paper-50);
+  border-color: var(--ink-950);
 }
 
 @media (max-width: 900px) {

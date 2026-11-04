@@ -5,7 +5,8 @@ import styles from './WaterBackdrop.module.css'
  * The site-wide water environment.
  *
  * One fixed, full-viewport WebGL canvas renders a pearlescent underwater
- * caustic field tuned to the blush/champagne/lilac palette. It is mounted
+ * caustic field tuned to the blush/champagne/lilac palette with deeper
+ * rose shadow cells between the filaments. It is mounted
  * once at the app shell, below every section, so the environment never
  * restarts across Home, the five case studies and NotFound.
  *
@@ -39,6 +40,7 @@ uniform vec3 uRose;
 uniform vec3 uChampagne;
 uniform vec3 uLilac;
 uniform vec3 uSpec;
+uniform vec3 uShadow;
 uniform float uStrength;
 
 float hash12(vec2 p) {
@@ -67,7 +69,7 @@ float caustics(vec2 uv, float t) {
   }
   c /= 5.0;
   c = 1.17 - pow(c, 1.4);
-  return clamp(pow(abs(c), 7.0), 0.0, 1.0);
+  return clamp(pow(abs(c), 4.0), 0.0, 1.0);
 }
 
 void main() {
@@ -83,17 +85,17 @@ void main() {
   float drift = uScroll * 0.00042;
   vec2 field = p + vec2(drift * 0.4, drift * 0.95) + uVel * 0.012;
 
-  float t = uTime * 0.055;
+  float t = uTime * 0.12;
 
   // Two caustic layers: broad filaments plus a finer counter-current.
-  float fila = caustics(field * 0.55 + vec2(t * 0.3, -t * 0.17), t);
-  float fila2 = caustics(field * 1.1 - vec2(t * 0.21, t * 0.11), -t * 0.8);
+  float fila = caustics(field * 0.55 + vec2(t * 0.5, -t * 0.3), t);
+  float fila2 = caustics(field * 1.1 - vec2(t * 0.35, t * 0.2), -t * 0.9);
   float veins = fila * 0.75 + fila2 * 0.45;
 
   // Slow drifting glow pools — the pearlescent body of the water.
-  float d1 = sin(uTime * 0.037 + 1.7);
-  float d2 = sin(uTime * 0.029 + 4.1);
-  float d3 = sin(uTime * 0.043 + 2.9);
+  float d1 = sin(uTime * 0.07 + 1.7);
+  float d2 = sin(uTime * 0.055 + 4.1);
+  float d3 = sin(uTime * 0.08 + 2.9);
   vec2 cCh = vec2(-0.32 + d1 * 0.1, 0.28 + d2 * 0.08);
   vec2 cBl = vec2(0.34 + d2 * 0.09, 0.18 + d3 * 0.07);
   vec2 cLi = vec2(-0.05 + d3 * 0.11, -0.32 + d1 * 0.09);
@@ -113,10 +115,13 @@ void main() {
   // A whisper more depth toward the bottom of the viewport.
   col = mix(col, uRose, max(0.0, 0.5 - uv.y) * 0.12);
 
-  // Refracted highlights ride the caustic veins.
+  // Refracted highlights ride the caustic veins; the softer cells between
+  // them deepen toward the shadow tone so the web reads as water relief
+  // rather than a flat brightening.
   float ripple = veins * (0.8 + 0.3 * abs(uVel));
-  col = mix(col, uSpec, clamp(ripple, 0.0, 1.0) * 0.3 * uStrength);
-  col = mix(col, uLilac, clamp(1.0 - ripple, 0.0, 1.0) * 0.06 * uStrength);
+  col = mix(col, uShadow, clamp(1.0 - ripple, 0.0, 1.0) * 0.32 * uStrength);
+  col = mix(col, uSpec, clamp(ripple, 0.0, 1.0) * 0.5 * uStrength);
+  col = mix(col, uLilac, clamp(1.0 - ripple, 0.0, 1.0) * 0.14 * uStrength);
 
   // Master dial: keeps every deviation anchored around the blush base.
   col = uBase + (col - uBase) * uStrength;
@@ -135,6 +140,7 @@ type Palette = {
   champagne: [number, number, number]
   lilac: [number, number, number]
   spec: [number, number, number]
+  shadow: [number, number, number]
   strength: number
 }
 
@@ -146,7 +152,8 @@ const FALLBACK_PALETTE: Palette = {
   champagne: [0.9686, 0.8941, 0.7843],
   lilac: [0.8118, 0.6627, 0.9098],
   spec: [1.0, 0.9804, 0.949],
-  strength: 0.75,
+  shadow: [0.8549, 0.6275, 0.6353],
+  strength: 0.92,
 }
 
 function readPalette(): Palette {
@@ -176,6 +183,7 @@ function readPalette(): Palette {
     champagne: hex('--water-champagne', FALLBACK_PALETTE.champagne),
     lilac: hex('--water-lilac', FALLBACK_PALETTE.lilac),
     spec: hex('--water-spec', FALLBACK_PALETTE.spec),
+    shadow: hex('--water-shadow', FALLBACK_PALETTE.shadow),
     strength: Number.isFinite(strength)
       ? Math.min(1.6, Math.max(0, strength))
       : FALLBACK_PALETTE.strength,
@@ -274,6 +282,7 @@ export default function WaterBackdrop() {
       'uChampagne',
       'uLilac',
       'uSpec',
+      'uShadow',
       'uStrength',
     ]) {
       u[name] = gl.getUniformLocation(program, name)
@@ -286,6 +295,7 @@ export default function WaterBackdrop() {
     gl.uniform3f(u.uChampagne, ...palette.champagne)
     gl.uniform3f(u.uLilac, ...palette.lilac)
     gl.uniform3f(u.uSpec, ...palette.spec)
+    gl.uniform3f(u.uShadow, ...palette.shadow)
     gl.uniform1f(u.uStrength, palette.strength)
 
     // Render at a soft fraction of the viewport: fewer pixels per frame and

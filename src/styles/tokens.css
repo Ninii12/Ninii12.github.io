@@ -1,7 +1,7 @@
 /* =========================================================
    Nancy Lawrance — editorial design tokens
    ---------------------------------------------------------
-   Warm paper, near-black ink, one electric-pink accent.
+   Pearl paper, deep sea-blue ink, pastel pink / yellow / blue.
    Flat surfaces, hairline rules and sharp editorial edges.
    ========================================================= */
 
@@ -15,15 +15,15 @@
   --paper-200: #e9e4da;
   --paper-300: #d8d2c7;
 
-  --ink-950: #0a0a0a;
-  --ink-900: #151515;
-  --ink-700: #383633;
-  --ink-500: #615d57;
-  --ink-400: #7c7770;
+  --ink-950: #152c44;
+  --ink-900: #1b3a5c;
+  --ink-700: #2e4d68;
+  --ink-500: #4d6a83;
+  --ink-400: #69809a;
 
-  --pink-500: #ff2e88;
-  --pink-600: #e9006c;
-  --pink-700: #bd0058;
+  --blush-400: #f6a9c9;
+  --butter-400: #f7d77a;
+  --sea-700: #2f6591;
 
   --white: #ffffff;
 
@@ -43,13 +43,16 @@
   --color-text-muted: var(--ink-500);
   --color-heading: var(--ink-950);
 
-  --color-accent: var(--pink-500);
-  --color-accent-hover: var(--pink-600);
-  --color-accent-ink: var(--pink-700);
-  --color-accent-decorative: var(--pink-500);
+  /* Header identity — the name carries its own steady ocean blue. */
+  --color-name: #205e86;
 
-  --color-border: rgba(10, 10, 10, 0.18);
-  --color-border-strong: rgba(10, 10, 10, 0.42);
+  --color-accent: var(--blush-400);
+  --color-accent-hover: var(--butter-400);
+  --color-accent-ink: var(--sea-700);
+  --color-accent-decorative: var(--blush-400);
+
+  --color-border: rgba(21, 44, 68, 0.18);
+  --color-border-strong: rgba(21, 44, 68, 0.42);
   --color-border-glass: rgba(255, 255, 255, 0.7);
   --color-border-chrome: rgba(255, 255, 255, 0.3);
 
@@ -60,12 +63,12 @@
 
   --color-inverse-bg: var(--ink-950);
   --color-inverse-text: var(--paper-50);
-  --color-inverse-muted: #b8b2a8;
+  --color-inverse-muted: #a9bfd2;
 
-  --color-scrim: rgba(10, 10, 10, 0.72);
-  --color-disabled: rgba(10, 10, 10, 0.34);
+  --color-scrim: rgba(21, 44, 68, 0.72);
+  --color-disabled: rgba(21, 44, 68, 0.34);
 
-  --color-selection-bg: var(--pink-500);
+  --color-selection-bg: var(--blush-400);
   --color-selection-text: var(--ink-950);
 
   /* -------------------------------------------------------
@@ -86,11 +89,12 @@
 
   --gradient-glass: none;
 
+  /* Pastel trio — soft sail blue, butter yellow, blush pink. */
   --gradient-metal-text: linear-gradient(
     100deg,
-    var(--pink-600),
-    var(--pink-500) 48%,
-    var(--pink-700)
+    #a8cfe8,
+    var(--butter-400) 48%,
+    var(--blush-400)
   );
 
   /* -------------------------------------------------------
@@ -103,7 +107,9 @@
   --water-champagne: #f7e4c8;
   --water-lilac: #cfa9e8;
   --water-spec: #fffaf2;
-  --water-strength: 0.75;
+  --water-shadow: #daa0a2;
+  --water-glow: #b9d9e9;
+  --water-strength: 0.92;
 
   /* -------------------------------------------------------
      Typography
@@ -203,14 +209,14 @@
   --shadow-card: none;
   --shadow-pearl: none;
   --shadow-inset: none;
-  --shadow-focus: 0 0 0 0.2rem rgba(255, 46, 136, 0.24);
+  --shadow-focus: 0 0 0 0.2rem rgba(247, 215, 122, 0.4);
 
   --blur-glass: 0;
   --blur-glow: 0;
 
   --opacity-muted: 0.66;
   --opacity-disabled: 0.4;
-  --opacity-grain: 0.035;
+  --opacity-grain: 0;
 
   /* -------------------------------------------------------
      Stacking order
@@ -258,9 +264,9 @@
   --color-text: var(--paper-50);
   --color-text-muted: var(--color-inverse-muted);
   --color-heading: var(--paper-50);
-  --color-accent: var(--pink-500);
-  --color-accent-hover: var(--pink-500);
-  --color-accent-ink: var(--pink-500);
+  --color-accent: var(--blush-400);
+  --color-accent-hover: var(--butter-400);
+  --color-accent-ink: var(--blush-400);
   --color-border: rgba(251, 249, 244, 0.22);
   --color-border-strong: rgba(251, 249, 244, 0.44);
   --color-focus: var(--paper-50);
@@ -268,8 +274,8 @@
   --color-surface-raised: var(--ink-900);
   --color-surface-glass: rgba(251, 249, 244, 0.08);
   --color-surface-glass-strong: rgba(251, 249, 244, 0.14);
-  --color-scrim: rgba(10, 10, 10, 0.82);
-  --color-selection-bg: var(--pink-500);
+  --color-scrim: rgba(21, 44, 68, 0.82);
+  --color-selection-bg: var(--blush-400);
   --color-selection-text: var(--ink-950);
 }
 

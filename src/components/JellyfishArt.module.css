@@ -7,6 +7,7 @@
  *   .drift   → ambient idle swim (CSS keyframes)
  *   inside   → body tilt, bell pulse with lagging mid layer, chain waves,
  *              ruffle, core breath, twinkle (CSS + SVG groups)
+ *   strings  → luminous threads: own sway rhythm + travelling light pulse
  */
 
 .stage {
@@ -152,6 +153,100 @@
 
   to {
     transform: rotate(var(--sway-amp, 3.4deg));
+  }
+}
+
+/*
+ * Luminous threads: three S-curved strings hanging behind the rose
+ * tentacles. Each sways on its own rhythm — irrationally related durations,
+ * so they never sync — while a slow lilac light travels down the curve
+ * like a passing current. Per-jelly phase offsets arrive through
+ * --string-offset, so the two bodies drift apart.
+ */
+.stringA,
+.stringB,
+.stringC {
+  transform-box: fill-box;
+  transform-origin: 50% 3%;
+}
+
+.stringA {
+  animation: jelly-string-a 9.4s ease-in-out var(--string-offset, -1.1s)
+    infinite;
+}
+
+.stringB {
+  animation: jelly-string-b 12.6s ease-in-out var(--string-offset, -3.4s)
+    infinite;
+}
+
+.stringC {
+  animation: jelly-string-c 14.5s ease-in-out var(--string-offset, -5.7s)
+    infinite;
+}
+
+@keyframes jelly-string-a {
+  0%,
+  100% {
+    transform: rotate(-2.2deg) translateX(-1.4px);
+  }
+
+  36% {
+    transform: rotate(1.6deg) translateX(1.8px);
+  }
+
+  70% {
+    transform: rotate(2.6deg) translateX(-0.6px);
+  }
+}
+
+@keyframes jelly-string-b {
+  0%,
+  100% {
+    transform: rotate(2deg) translateX(2px);
+  }
+
+  30% {
+    transform: rotate(-1.4deg) translateX(-1.2px);
+  }
+
+  62% {
+    transform: rotate(-3.2deg) translateX(-2.2px);
+  }
+
+  86% {
+    transform: rotate(0.6deg) translateX(0.8px);
+  }
+}
+
+@keyframes jelly-string-c {
+  0%,
+  100% {
+    transform: rotate(-1.6deg) translateX(-2.6px);
+  }
+
+  44% {
+    transform: rotate(1.2deg) translateX(2.8px);
+  }
+
+  78% {
+    transform: rotate(2.4deg) translateX(0.4px);
+  }
+}
+
+/* One soft gleam gliding root to tip — a current, never a blinking dash. */
+.stringRun {
+  animation: jelly-string-run var(--string-run, 16s) linear
+    calc(var(--string-offset, -1.1s) * 2.35) infinite;
+}
+
+@keyframes jelly-string-run {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -120;
   }
 }
 
@@ -310,6 +405,14 @@
   .ribB,
   .ribC,
   .spark {
+    animation: none;
+  }
+
+  /* Threads rest in their drawn pose: no sway, no travelling light. */
+  .stringA,
+  .stringB,
+  .stringC,
+  .stringRun {
     animation: none;
   }
 }

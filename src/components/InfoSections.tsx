@@ -114,16 +114,25 @@ export function ContactSection() {
           <div className={styles.contactBody}>
             <p>
               Open to remote opportunities. If you are hiring, building a team
-              or have a question about the work, email is the simplest way to
-              reach me.
+              or have a question about the work, email or phone is the simplest
+              way to reach me.
             </p>
 
-            <a className={styles.email} href={`mailto:${site.email}`}>
-              {site.email}
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M4 12h15M13 6l6 6-6 6" />
-              </svg>
-            </a>
+            <div className={styles.contactMethods}>
+              <a className={styles.email} href={`mailto:${site.email}`}>
+                {site.email}
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M4 12h15M13 6l6 6-6 6" />
+                </svg>
+              </a>
+
+              <a className={styles.phone} href={site.phoneHref}>
+                {site.phone}
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M4 12h15M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </div>
 
             <div className={styles.contactLinks}>
               <a

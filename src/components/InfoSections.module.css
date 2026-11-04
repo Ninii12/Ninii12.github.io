@@ -233,11 +233,17 @@
   line-height: var(--leading-relaxed);
 }
 
-.email {
+.contactMethods {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.email,
+.phone {
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  margin-top: var(--space-5);
   padding-bottom: 0.25rem;
   border-bottom: 1px solid rgba(251, 249, 244, 0.48);
   color: var(--paper-50);
@@ -252,13 +258,25 @@
     color var(--transition-fast);
 }
 
+.email {
+  margin-top: var(--space-5);
+}
+
+.phone {
+  margin-top: var(--space-3);
+  white-space: nowrap;
+}
+
 .email:hover,
-.email:focus-visible {
+.email:focus-visible,
+.phone:hover,
+.phone:focus-visible {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
-.email svg {
+.email svg,
+.phone svg {
   width: 1.1em;
   height: 1.1em;
   flex: 0 0 auto;
@@ -271,7 +289,9 @@
 }
 
 .email:hover svg,
-.email:focus-visible svg {
+.email:focus-visible svg,
+.phone:hover svg,
+.phone:focus-visible svg {
   transform: translateX(0.25rem);
 }
 

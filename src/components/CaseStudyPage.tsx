@@ -1,5 +1,5 @@
 import { projects, type Project } from '../data/projects'
-import ProjectMark from './ProjectMark'
+import PhotoMark from './PhotoMark'
 import { Link } from './RouteLink'
 import styles from './CaseStudyPage.module.css'
 
@@ -59,7 +59,7 @@ export default function CaseStudyPage({ project }: CaseStudyPageProps) {
             </div>
 
             <div className={styles.heroMark}>
-              <ProjectMark accent={project.accent} index={project.index} />
+              <PhotoMark accent={project.accent} index={project.index} />
             </div>
           </div>
 

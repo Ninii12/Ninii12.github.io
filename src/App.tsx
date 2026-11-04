@@ -4,6 +4,7 @@ import { AboutSection, ContactSection } from './components/InfoSections'
 import CaseStudyPage from './components/CaseStudyPage'
 import CertificationsSection from './components/CertificationsSection'
 import CharmHero from './components/CharmHero'
+import PersonalProjectSection from './components/PersonalProjectSection'
 import { Link } from './components/RouteLink'
 import SiteHeader from './components/SiteHeader'
 import WaterBackdrop from './components/WaterBackdrop'
@@ -86,6 +87,7 @@ function App() {
         {route.name === 'home' && (
           <>
             <HomeHeroWork />
+            <PersonalProjectSection />
             <CertificationsSection />
             <AboutSection />
             <ContactSection />

@@ -321,8 +321,8 @@ export function useHomeScrollStory(scopeRef: RefObject<HTMLElement | null>) {
           .to(caption, { y: 10, opacity: 0, duration: 0.18 }, 0.08)
           .to(name, { y: -38, opacity: 0, duration: 0.22 }, 0.08)
           .to(role, { y: -18, opacity: 0, duration: 0.18 }, 0.1)
-          .to(grid, { yPercent: -6, opacity: 0.35, duration: 0.8 }, 0.02)
-          .to(watermark, { yPercent: -8, opacity: 0.18, duration: 0.8 }, 0.02)
+          .to(grid, { yPercent: -6, opacity: 0, duration: 0.8 }, 0.02)
+          .to(watermark, { yPercent: -8, opacity: 0.06, duration: 0.8 }, 0.02)
           .to(copy, {
             y: -16,
             scale: 0.98,
@@ -456,8 +456,8 @@ export function useHomeScrollStory(scopeRef: RefObject<HTMLElement | null>) {
           .to(copy, { y: -12, duration: 1 }, 0)
           .to(art, { y: 24, scale: 1.025, duration: 1 }, 0)
           .to(artScroll, { rotate: 1.6, duration: 1 }, 0)
-          .to(grid, { yPercent: -4, opacity: 0.5, duration: 1 }, 0)
-          .to(watermark, { yPercent: -5, opacity: 0.2, duration: 1 }, 0)
+          .to(grid, { yPercent: -4, opacity: 0, duration: 1 }, 0)
+          .to(watermark, { yPercent: -5, opacity: 0.06, duration: 1 }, 0)
 
         const refreshFrame = window.requestAnimationFrame(() => {
           ScrollTrigger.refresh()

@@ -1,5 +1,6 @@
 import { useLocation } from '../lib/router'
 import { Link } from './RouteLink'
+import ShellMark from './ShellMark'
 import styles from './SiteHeader.module.css'
 
 const navigation = [
@@ -20,9 +21,7 @@ export default function SiteHeader() {
           href="/"
           aria-label="Nancy Lawrance, back to top"
         >
-          <span className={styles.monogram} aria-hidden="true">
-            N
-          </span>
+          <ShellMark className={styles.brandMark} />
           <span className={styles.name}>Nancy Lawrance</span>
         </Link>
 

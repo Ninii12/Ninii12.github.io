@@ -33,6 +33,28 @@ const CHAINS: ChainDef[] = [
 ]
 
 /**
+ * Three luminous threads trailing behind the rose tentacles. Each is a
+ * single long S-curve drawn as four stacked strokes — whisper halo, glass
+ * layer, crisp thread and a slow travelling gleam — so the glow is baked
+ * into the strokes and no SVG filters are needed. Roots sit in the gaps
+ * between the chains and every tip runs slightly past the longest chain.
+ */
+const STRINGS = [
+  {
+    key: 'stringA',
+    d: 'M108 208C88 252 124 302 106 350C90 392 120 432 112 476',
+  },
+  {
+    key: 'stringB',
+    d: 'M150 210C174 256 134 314 156 362C178 402 144 444 152 478',
+  },
+  {
+    key: 'stringC',
+    d: 'M190 208C208 250 176 296 194 342C210 388 180 428 188 474',
+  },
+]
+
+/**
  * Splits one strand into three connected cubic segments. Segment starts and
  * ends chain at shared joints, and each segment keeps a gentle S-bend so the
  * chain reads as one flowing strand while every part can lag independently.
@@ -106,9 +128,9 @@ const PLEAT_PATHS = [
 /**
  * A translucent, pearlescent jellyfish drawn entirely in SVG so it glows on
  * the blush paper: pale pink, dusty rose, lilac and lavender membranes, a
- * champagne heart, a white rim light and chains of trailing strands. All
- * softness is gradient-baked; no SVG filters are used, so every animated
- * element stays cheap to repaint.
+ * champagne heart, a white rim light, chains of trailing strands and three
+ * luminous threads. All softness is gradient-baked; no SVG filters are
+ * used, so every animated element stays cheap to repaint.
  */
 const Jellyfish: FC<JellyfishProps> = ({ prefix, phase }) => {
   const ramp = [1, 0.72, 0.52]
@@ -168,6 +190,19 @@ const Jellyfish: FC<JellyfishProps> = ({ prefix, phase }) => {
           <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.85" />
           <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
         </linearGradient>
+        <linearGradient id={`${prefix}-string`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#B9D9E9" stopOpacity="0" />
+          <stop offset="16%" stopColor="#AECFE9" stopOpacity="0.55" />
+          <stop offset="38%" stopColor="#B9D9E9" stopOpacity="0.95" />
+          <stop offset="58%" stopColor="#CFA9E8" stopOpacity="0.6" />
+          <stop offset="78%" stopColor="#B9D9E9" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#B9D9E9" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id={`${prefix}-string-hi`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#DCC5F0" stopOpacity="0" />
+          <stop offset="55%" stopColor="#D8BEEE" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#CFA9E8" stopOpacity="0.55" />
+        </linearGradient>
         <linearGradient id={`${prefix}-shade`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#6E5578" stopOpacity="0.42" />
           <stop offset="100%" stopColor="#6E5578" stopOpacity="0" />
@@ -184,6 +219,58 @@ const Jellyfish: FC<JellyfishProps> = ({ prefix, phase }) => {
       />
 
       <g className={styles.bodyTilt}>
+        {/* Luminous threads — three independent currents behind the tentacles */}
+        <g fill="none" strokeLinecap="round">
+          {STRINGS.map((string, index) => {
+            const sway = -(
+              index * 2.3 +
+              phase * 1.35 +
+              1.1
+            ).toFixed(2)
+            return (
+              <g
+                key={string.key}
+                className={styles[string.key]}
+                style={
+                  {
+                    '--string-offset': `${sway}s`,
+                    '--string-run': `${(14 + index * 4.5).toFixed(1)}s`,
+                  } as CSSProperties
+                }
+              >
+                {/* Halo strokes share one curve, no filters */}
+                <path
+                  d={string.d}
+                  stroke={`url(#${prefix}-string)`}
+                  strokeWidth={4.4}
+                  strokeOpacity={0.1}
+                />
+                <path
+                  d={string.d}
+                  stroke={`url(#${prefix}-string)`}
+                  strokeWidth={2.1}
+                  strokeOpacity={0.3}
+                />
+                <path
+                  d={string.d}
+                  stroke={`url(#${prefix}-string)`}
+                  strokeWidth={1.15}
+                  strokeOpacity={0.85}
+                />
+                {/* Slow lilac sheen gliding root to tip, soft and unblinking */}
+                <path
+                  className={styles.stringRun}
+                  d={string.d}
+                  stroke={`url(#${prefix}-string-hi)`}
+                  strokeWidth={2.4}
+                  strokeOpacity={0.3}
+                  strokeDasharray="46 74"
+                />
+              </g>
+            )
+          })}
+        </g>
+
         {/* Tentacle chains — each strand waves in three lagging segments */}
         <g fill="none">
           {CHAINS.map((chain, strandIndex) => {

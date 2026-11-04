@@ -50,6 +50,11 @@
       48% 44% at 82% 80%,
       rgba(223, 173, 173, 0.34),
       transparent 78%
+    ),
+    radial-gradient(
+      52% 48% at 60% 88%,
+      rgba(218, 160, 162, 0.45),
+      transparent 80%
     );
   content: '';
 }

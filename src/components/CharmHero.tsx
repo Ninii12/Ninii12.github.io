@@ -22,7 +22,11 @@ export default function CharmHero() {
         aria-labelledby="hero-title"
       >
         <div className={styles.grid} data-hero-grid aria-hidden="true" />
-        <span className={styles.issueWatermark} aria-hidden="true">
+        <span
+          className={styles.issueWatermark}
+          data-hero-watermark
+          aria-hidden="true"
+        >
           01
         </span>
 

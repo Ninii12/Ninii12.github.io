@@ -1,0 +1,67 @@
+/*
+ * PhotoMark — decorative case-study mark.
+ * The plate fills the wrapping .art / .heroMark container exactly like the
+ * retired marks did, so card and hero geometry stay untouched. The portrait
+ * artwork is cropped into the square plate with object-position tuned to
+ * keep the shell, starfish and lily centred while leaving a calm white band
+ * at the bottom for the numeral.
+ */
+
+.mark {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: clip;
+  border: 1px solid var(--ink-950);
+  background: var(--paper-50);
+  container-type: inline-size;
+  isolation: isolate;
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 58%;
+  user-select: none;
+  pointer-events: none;
+}
+
+/*
+ * The case-study numeral — ink on the calm white band, with a whisper of
+ * pearl glow so it stays crisp where the lily's petals reach beneath it.
+ * Sized in container-query units so it scales with the plate everywhere.
+ */
+.number {
+  position: absolute;
+  bottom: 5cqi;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+  color: var(--ink-950);
+  font-family: var(--font-display);
+  font-size: 15cqi;
+  font-weight: var(--weight-regular);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  opacity: 0.92;
+  text-shadow:
+    0 0 10px rgba(255, 251, 244, 0.7),
+    0 0 2px rgba(255, 251, 244, 0.55);
+  user-select: none;
+}
+
+@supports not (width: 1cqi) {
+  .number {
+    font-size: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mark {
+    transition: transform var(--transition-base);
+  }
+}
